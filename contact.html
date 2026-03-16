@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Get In Touch | Greta Tengattini</title>
+    <meta name="description" content="Contact Greta Tengattini, San Francisco real estate expert. Schedule a consultation for buying or selling in SF." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="page">
+      <header class="site-header">
+        <div class="container">
+          <div class="header-inner">
+            <a href="index.html" class="brand">
+              <span class="brand-title">Greta Tengattini</span>
+              <span class="brand-subtitle">Mosaik Real Estate</span>
+            </a>
+            <button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="primary-nav">
+              <span class="nav-toggle-line"></span>
+              <span class="nav-toggle-line"></span>
+              <span class="nav-toggle-line"></span>
+            </button>
+          </div>
+          <nav id="primary-nav" class="nav-menu" aria-label="Primary">
+            <a href="index.html">About</a>
+            <a href="buying.html">Buying</a>
+            <a href="selling.html">Selling</a>
+            <a href="guides.html">Guides</a>
+            <a href="buying.html#faq">FAQ</a>
+            <a href="contact.html">Contact</a>
+          </nav>
+        </div>
+      </header>
+
+      <main>
+        <!-- CONTACT -->
+        <section id="contact" class="section-alt">
+          <div class="container">
+            <div class="section-header">
+              <h2>Get In Touch</h2>
+              <p class="section-intro">
+                Ready to start your home buying journey? Let's talk about your goals and how I can help you
+                navigate San Francisco's competitive market.
+              </p>
+            </div>
+            <div class="contact-card">
+              <a
+                href="mailto:greta@mosaikrealestate.com?subject=Buyer Consultation Request"
+                class="btn btn-primary"
+              >
+                Book Your Consultation
+              </a>
+              <div class="contact-info">
+                <p><strong>Email:</strong> <a href="mailto:greta@mosaikrealestate.com">greta@mosaikrealestate.com</a></p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <div class="container">
+          <div class="footer-inner">
+            <div>© <span id="year"></span> Greta Tengattini, San Francisco Buyer's Agent. All rights reserved.</div>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+      const navToggle = document.querySelector(".nav-toggle");
+      const navMenu = document.getElementById("primary-nav");
+      if (navToggle && navMenu) {
+        navToggle.addEventListener("click", () => {
+          navToggle.setAttribute("aria-expanded", navMenu.classList.toggle("open") ? "true" : "false");
+        });
+        navMenu.querySelectorAll("a").forEach(link => {
+          link.addEventListener("click", () => {
+            navMenu.classList.remove("open");
+            navToggle.setAttribute("aria-expanded", "false");
+          });
+        });
+      }
+      const header = document.querySelector(".site-header");
+      if (header) {
+        let ticking = false;
+        window.addEventListener("scroll", () => {
+          if (!ticking) {
+            requestAnimationFrame(() => {
+              header.classList.toggle("is-shrunk", window.scrollY >= 50);
+              ticking = false;
+            });
+            ticking = true;
+          }
+        }, { passive: true });
+        header.classList.toggle("is-shrunk", window.scrollY >= 50);
+      }
+    </script>
+  </body>
+</html>
