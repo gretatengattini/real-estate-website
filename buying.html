@@ -31,6 +31,7 @@
             <a href="selling.html">Selling</a>
             <a href="guides.html">Guides</a>
             <a href="buying.html#faq">FAQ</a>
+            <a href="reviews.html">Reviews</a>
             <a href="contact.html">Contact</a>
           </nav>
         </div>
@@ -326,16 +327,19 @@
       const header = document.querySelector(".site-header");
       if (header) {
         let ticking = false;
+        function updateHeaderShrink() {
+          const y = window.scrollY;
+          if (y >= 50) header.classList.add("is-shrunk");
+          else if (y < 30) header.classList.remove("is-shrunk");
+          ticking = false;
+        }
         window.addEventListener("scroll", () => {
           if (!ticking) {
-            requestAnimationFrame(() => {
-              header.classList.toggle("is-shrunk", window.scrollY >= 50);
-              ticking = false;
-            });
+            requestAnimationFrame(updateHeaderShrink);
             ticking = true;
           }
         }, { passive: true });
-        header.classList.toggle("is-shrunk", window.scrollY >= 50);
+        updateHeaderShrink();
       }
     </script>
   </body>

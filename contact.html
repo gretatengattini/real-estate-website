@@ -31,6 +31,7 @@
             <a href="selling.html">Selling</a>
             <a href="guides.html">Guides</a>
             <a href="buying.html#faq">FAQ</a>
+            <a href="reviews.html">Reviews</a>
             <a href="contact.html">Contact</a>
           </nav>
         </div>
@@ -38,6 +39,7 @@
 
       <main>
         <!-- CONTACT -->
+        <!-- Calendly: gretatengattini/30min -->
         <section id="contact" class="section-alt">
           <div class="container">
             <div class="section-header">
@@ -48,15 +50,23 @@
               </p>
             </div>
             <div class="contact-card">
-              <a
-                href="mailto:greta@mosaikrealestate.com?subject=Buyer Consultation Request"
-                class="btn btn-primary"
-              >
-                Book Your Consultation
-              </a>
+              <button type="button" id="show-calendly-btn" class="btn btn-primary">
+                Book a time with me
+              </button>
+              <p class="contact-or">or email me</p>
               <div class="contact-info">
                 <p><strong>Email:</strong> <a href="mailto:greta@mosaikrealestate.com">greta@mosaikrealestate.com</a></p>
               </div>
+            </div>
+            <div id="calendly-embed-wrap" class="calendly-embed-wrap" hidden>
+              <iframe
+                src="https://calendly.com/gretatengattini/30min"
+                title="Schedule a call with Greta"
+                width="100%"
+                height="700"
+                frameborder="0"
+                class="calendly-iframe"
+              ></iframe>
             </div>
           </div>
         </section>
@@ -73,6 +83,14 @@
 
     <script>
       document.getElementById("year").textContent = new Date().getFullYear();
+      const showCalendlyBtn = document.getElementById("show-calendly-btn");
+      const calendlyWrap = document.getElementById("calendly-embed-wrap");
+      if (showCalendlyBtn && calendlyWrap) {
+        showCalendlyBtn.addEventListener("click", () => {
+          calendlyWrap.hidden = false;
+          calendlyWrap.scrollIntoView({ behavior: "smooth", block: "start" });
+        });
+      }
       const navToggle = document.querySelector(".nav-toggle");
       const navMenu = document.getElementById("primary-nav");
       if (navToggle && navMenu) {
@@ -89,16 +107,19 @@
       const header = document.querySelector(".site-header");
       if (header) {
         let ticking = false;
+        function updateHeaderShrink() {
+          const y = window.scrollY;
+          if (y >= 50) header.classList.add("is-shrunk");
+          else if (y < 30) header.classList.remove("is-shrunk");
+          ticking = false;
+        }
         window.addEventListener("scroll", () => {
           if (!ticking) {
-            requestAnimationFrame(() => {
-              header.classList.toggle("is-shrunk", window.scrollY >= 50);
-              ticking = false;
-            });
+            requestAnimationFrame(updateHeaderShrink);
             ticking = true;
           }
         }, { passive: true });
-        header.classList.toggle("is-shrunk", window.scrollY >= 50);
+        updateHeaderShrink();
       }
     </script>
   </body>

@@ -31,6 +31,7 @@
             <a href="selling.html">Selling</a>
             <a href="guides.html">Guides</a>
             <a href="buying.html#faq">FAQ</a>
+            <a href="reviews.html">Reviews</a>
             <a href="contact.html">Contact</a>
           </nav>
         </div>
@@ -93,7 +94,7 @@
                   <a href="contact.html" class="btn btn-outline">Schedule a 15-min call</a>
                 </div>
                 <div id="guide-form-seller" class="guide-form-wrap" hidden>
-                  <form class="guide-form" data-guide="seller" aria-label="Request Seller Guide">
+                  <form class="guide-form" data-guide="seller" aria-label="Request Seller Guide" action="https://formspree.io/f/mojkkolg" method="POST">
                     <label class="guide-label" for="guide-seller-fname">First name</label>
                     <input type="text" id="guide-seller-fname" class="guide-input" name="firstName" required autocomplete="given-name" />
                     <label class="guide-label" for="guide-seller-lname">Last name</label>
@@ -152,16 +153,19 @@
       const header = document.querySelector(".site-header");
       if (header) {
         let ticking = false;
+        function updateHeaderShrink() {
+          const y = window.scrollY;
+          if (y >= 50) header.classList.add("is-shrunk");
+          else if (y < 30) header.classList.remove("is-shrunk");
+          ticking = false;
+        }
         window.addEventListener("scroll", () => {
           if (!ticking) {
-            requestAnimationFrame(() => {
-              header.classList.toggle("is-shrunk", window.scrollY >= 50);
-              ticking = false;
-            });
+            requestAnimationFrame(updateHeaderShrink);
             ticking = true;
           }
         }, { passive: true });
-        header.classList.toggle("is-shrunk", window.scrollY >= 50);
+        updateHeaderShrink();
       }
 
       const guideFormWraps = document.querySelectorAll(".guide-form-wrap");
@@ -187,15 +191,32 @@
       });
 
       guideForms.forEach((form) => {
-        form.addEventListener("submit", (e) => {
+        form.addEventListener("submit", async (e) => {
           e.preventDefault();
           const guide = form.getAttribute("data-guide");
           const formWrap = document.getElementById("guide-form-" + guide);
           const successEl = document.querySelector(".guide-success[data-success=\"" + guide + "\"]");
           const getBtn = document.querySelector(".guide-get-btn[data-guide=\"" + guide + "\"]");
-          formWrap.hidden = true;
-          if (successEl) successEl.hidden = false;
-          if (getBtn) getBtn.setAttribute("aria-expanded", "false");
+          const submitBtn = form.querySelector(".guide-submit");
+          if (form.action && form.action.includes("formspree.io")) {
+            if (submitBtn) submitBtn.disabled = true;
+            try {
+              const res = await fetch(form.action, { method: "POST", body: new FormData(form), headers: { Accept: "application/json" } });
+              if (res.ok) {
+                formWrap.hidden = true;
+                if (successEl) successEl.hidden = false;
+                if (getBtn) getBtn.setAttribute("aria-expanded", "false");
+              } else {
+                if (submitBtn) submitBtn.disabled = false;
+              }
+            } catch {
+              if (submitBtn) submitBtn.disabled = false;
+            }
+          } else {
+            formWrap.hidden = true;
+            if (successEl) successEl.hidden = false;
+            if (getBtn) getBtn.setAttribute("aria-expanded", "false");
+          }
         });
       });
     </script>
