@@ -1,0 +1,286 @@
+/**
+ * Design experiment: Quiet Luxury
+ * Refined, understated SF real estate aesthetic.
+ * Loaded after styles.css — visual overrides only.
+ */
+
+:root {
+  --navy: #284A3C;
+  --navy-dark: #1E3A30;
+  --bg-main: #FAF9F7;
+  --bg-alt: #F3F0EA;
+  --card-bg: #FFFFFF;
+  --divider: #DEDAD2;
+  --text-body: #1E1E1C;
+  --text-muted: #6B6963;
+  --font-display: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  --font-body: "Inter", "Manrope", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --radius-sm: 3px;
+  --radius-md: 4px;
+  --shadow-soft: 0 1px 2px rgba(30, 30, 28, 0.04);
+  --shadow-card: 0 1px 3px rgba(30, 30, 28, 0.05);
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--text-body);
+  background-color: var(--bg-main);
+  letter-spacing: 0.005em;
+}
+
+h1,
+h2,
+h3,
+h4,
+.brand-title,
+.form-title,
+.success-title,
+.guide-card-title,
+.hero-title {
+  font-family: var(--font-display);
+  color: var(--navy);
+  letter-spacing: -0.02em;
+}
+
+h1 {
+  font-size: clamp(2.65rem, 5.5vw, 4.25rem);
+  font-weight: 600;
+  line-height: 1.15;
+}
+
+h2 {
+  font-size: clamp(2rem, 3.5vw, 2.65rem);
+  font-weight: 600;
+}
+
+.brand-title {
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: var(--navy);
+}
+
+.brand-subtitle {
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-size: 0.72rem;
+  font-weight: 500;
+}
+
+.site-header {
+  border-bottom-color: var(--divider);
+  box-shadow: none;
+}
+
+.site-header.is-shrunk {
+  box-shadow: var(--shadow-soft);
+}
+
+.site-header::before {
+  background: rgba(250, 249, 247, 0.94);
+}
+
+.nav-menu {
+  background: rgba(250, 249, 247, 0.98);
+  box-shadow: 0 12px 28px rgba(30, 30, 28, 0.06);
+  border-top-color: var(--divider);
+}
+
+.nav-menu a:hover {
+  color: var(--navy);
+  background: rgba(40, 74, 60, 0.05);
+}
+
+.nav-toggle-line {
+  background: var(--navy);
+}
+
+section {
+  padding: clamp(5.5rem, 13vw, 7.5rem) 0;
+}
+
+.section-intro,
+p {
+  color: var(--text-body);
+}
+
+.section-intro {
+  color: var(--text-muted);
+  max-width: 36rem;
+}
+
+.btn {
+  border-radius: var(--radius-sm);
+  font-family: var(--font-body);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  padding: 0.95rem 1.85rem;
+  transition: background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease, opacity 0.25s ease;
+}
+
+.btn-primary {
+  background: #284A3C;
+  color: #FFFFFF;
+  border-color: #284A3C;
+}
+
+.btn-primary:hover {
+  background: #1E3A30;
+  border-color: #1E3A30;
+  opacity: 1;
+}
+
+.btn-outline {
+  color: #284A3C;
+  border-color: #284A3C;
+  background: transparent;
+}
+
+.btn-outline:hover {
+  background: rgba(40, 74, 60, 0.04);
+  opacity: 1;
+}
+
+.article-card,
+.guide-card,
+.path-card,
+.contact-card,
+.faq-item,
+.review-card,
+.about-bio-card,
+.about-photo-card,
+.evaluation-section .form-panel {
+  background: var(--card-bg);
+  border: 1px solid var(--divider);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+}
+
+.article-card:hover,
+.guide-card:hover,
+.path-card:hover {
+  box-shadow: 0 2px 8px rgba(30, 30, 28, 0.06);
+  border-color: #d0cbc2;
+}
+
+.article-category,
+.about-label,
+.process-step-number {
+  color: var(--navy);
+  letter-spacing: 0.12em;
+}
+
+.hero-overlay {
+  background: linear-gradient(
+    180deg,
+    rgba(250, 249, 247, 0.12) 0%,
+    rgba(30, 30, 28, 0.32) 100%
+  );
+}
+
+.about-photo-card img,
+.evaluation-section .intro-photo {
+  filter: contrast(1.02) saturate(0.96);
+}
+
+.about-photo-card,
+.evaluation-section .intro-photo-wrap {
+  border-color: var(--divider);
+}
+
+.site-footer {
+  background: var(--bg-main);
+  border-top-color: var(--divider);
+  color: var(--text-muted);
+}
+
+/* Evaluation form */
+.evaluation-section .lede {
+  color: var(--text-muted);
+  font-family: var(--font-display);
+}
+
+.evaluation-section .field label {
+  color: var(--navy);
+  font-weight: 500;
+}
+
+.evaluation-section .field input,
+.evaluation-section .field textarea {
+  border-color: var(--divider);
+  border-radius: var(--radius-sm);
+  background: #fff;
+  color: var(--text-body);
+}
+
+.evaluation-section .field input:focus,
+.evaluation-section .field textarea:focus {
+  border-color: #284A3C;
+  box-shadow: 0 0 0 3px rgba(40, 74, 60, 0.12);
+}
+
+.evaluation-section .address-suggestion:hover,
+.evaluation-section .address-suggestion.is-active,
+.evaluation-section .address-suggestion[aria-selected="true"] {
+  background: rgba(40, 74, 60, 0.06);
+}
+
+.evaluation-section .field-consent input[type="checkbox"] {
+  accent-color: #284A3C;
+}
+
+.guide-input {
+  border-color: var(--divider);
+  border-radius: var(--radius-sm);
+}
+
+.guide-input:focus {
+  border-color: #284A3C;
+}
+
+/* Subtle fade-in only */
+@media (prefers-reduced-motion: no-preference) {
+  .about-section,
+  .section-header,
+  .article-card,
+  .guide-card,
+  .path-card,
+  .evaluation-section .assessment-intro,
+  .evaluation-section .form-panel {
+    animation: qlFadeIn 0.7s ease both;
+  }
+
+  .article-card:nth-child(2),
+  .guide-card:nth-child(2),
+  .path-card:nth-child(2) {
+    animation-delay: 0.08s;
+  }
+
+  .article-card:nth-child(3),
+  .path-card:nth-child(3) {
+    animation-delay: 0.16s;
+  }
+}
+
+@keyframes qlFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about-section,
+  .section-header,
+  .article-card,
+  .guide-card,
+  .path-card,
+  .evaluation-section .assessment-intro,
+  .evaluation-section .form-panel {
+    animation: none;
+  }
+}

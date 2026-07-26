@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="noindex,nofollow" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reviews | Greta Tengattini</title>
+    <meta name="description" content="What clients say about working with Greta Tengattini for San Francisco real estate. Buyer and seller testimonials." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../styles.css" />
+    <link rel="stylesheet" href="../themes/modern-tech.css" />
+    <link rel="stylesheet" href="../themes/design-switcher.css" />
+  </head>
+  <body class="design-preview design-modern-tech">
+    <div class="page">
+      <header class="site-header">
+        <div class="container">
+          <div class="header-inner">
+            <a href="index.html" class="brand">
+              <span class="brand-title">Greta Tengattini</span>
+              <span class="brand-subtitle">Mosaik Real Estate</span>
+            </a>
+            <button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="primary-nav">
+              <span class="nav-toggle-line"></span>
+              <span class="nav-toggle-line"></span>
+              <span class="nav-toggle-line"></span>
+            </button>
+          </div>
+          <nav id="primary-nav" class="nav-menu" aria-label="Primary">
+            <a href="index.html">About</a>
+            <a href="buying.html">Buying</a>
+            <a href="selling.html">Selling</a>
+            <a href="evaluation.html">Evaluation</a>
+            <a href="guides.html">Guides</a>
+            <a href="buying.html#faq">FAQ</a>
+            <a href="reviews.html">Reviews</a>
+            <a href="contact.html">Contact</a>
+          </nav>
+        </div>
+      </header>
+
+      <main>
+        <section id="reviews" class="section-alt reviews-section">
+          <div class="container">
+            <div class="section-header">
+              <h2>Reviews</h2>
+              <p class="section-intro">
+                Kind words from clients I've had the privilege of helping.
+              </p>
+            </div>
+            <div class="reviews-grid">
+              <blockquote class="review-card">
+                <p class="review-text">"Greta was absolutely amazing to work with. She was timely, incredibly helpful, and very quick to respond throughout the entire process. Despite having a very tight schedule, she was able to fit me in and went above and beyond—she even missed her co-worker's baby shower just to help me because it was my last day in the city. Coming from another state and not knowing anyone, that meant more to me than I can express. Greta is extremely knowledgeable, well-educated, and truly cares about her clients. I couldn't have asked for a better experience and would highly recommend her to anyone looking for a dedicated and trustworthy professional."</p>
+                <footer class="review-footer">
+                  <cite class="review-author">— Chantal P.</cite>
+                  <span class="review-meta">Buyer</span>
+                </footer>
+              </blockquote>
+              <blockquote class="review-card">
+                <p class="review-text">"Greta made us feel very supported throughout the entire process. She was always responsive and quick to help whenever we had questions. She is extremely knowledgeable and thoughtful, which made a real difference for us. Greta is also a strong negotiator while remaining kind and easy to work with — something the listing agent appreciated as well. That positive relationship helped make the process smoother and ultimately worked in our favor."</p>
+                <footer class="review-footer">
+                  <cite class="review-author">— Lizabeth T.</cite>
+                  <span class="review-meta">Buyer</span>
+                </footer>
+              </blockquote>
+              <blockquote class="review-card">
+                <p class="review-text">"What we appreciated most about Greta? She doesn't act like a salesperson, she really approaches things like a consultant! There were a couple of times when she pointed out issues with properties that we hadn't noticed and shared her honest opinion. That kind of transparency is exactly what you hope for in an agent, but it's not always easy to find. Greta is also extremely reliable and someone you can genuinely trust. Her preparation, patience, and honesty throughout the process made us feel confident the entire time. Thank you!!"</p>
+                <footer class="review-footer">
+                  <cite class="review-author">— Michael N.</cite>
+                  <span class="review-meta">Buyer</span>
+                </footer>
+              </blockquote>
+              <blockquote class="review-card">
+                <p class="review-text">"We are both engineers and tend to appreciate a more analytical approach — advice based on real facts rather than just opinions. The fact that Greta has a background in business analytics and is very good at reading and interpreting data made a big difference for us. It made the whole process easier to understand and helped us feel more confident in the decisions we were making. She was also always very responsive and took the time to answer our questions clearly, which we really appreciated."</p>
+                <footer class="review-footer">
+                  <cite class="review-author">— Corinne K.</cite>
+                  <span class="review-meta">Buyer</span>
+                </footer>
+              </blockquote>
+              <blockquote class="review-card">
+                <p class="review-text">"One thing we liked about Greta right away was her Italian accent — in stressful moments it actually had a calming effect on us. Joking aside, she is simply a very good person to have on your side during the process. She makes you feel truly listened to, and every question is taken seriously and answered thoughtfully. You never feel pushed to make a decision — when she gives advice, it's because she genuinely believes it's the right thing and wants to help. From the very first time we met, she even drove me around the city to tour homes because my car had broken down. She was always kind and patient, and that meant a lot to us."</p>
+                <footer class="review-footer">
+                  <cite class="review-author">— Sarah P.</cite>
+                  <span class="review-meta">Buyer</span>
+                </footer>
+              </blockquote>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <div class="container">
+          <div class="footer-inner">
+            <div>© <span id="year"></span> Greta Tengattini, San Francisco Buyer's Agent. All rights reserved.</div>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+      const navToggle = document.querySelector(".nav-toggle");
+      const navMenu = document.getElementById("primary-nav");
+      if (navToggle && navMenu) {
+        navToggle.addEventListener("click", () => {
+          const isOpen = navMenu.classList.toggle("open");
+          navToggle.classList.toggle("open", isOpen);
+          navToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+        });
+        navMenu.querySelectorAll("a").forEach(link => {
+          link.addEventListener("click", () => {
+            navMenu.classList.remove("open");
+            navToggle.classList.remove("open");
+            navToggle.setAttribute("aria-expanded", "false");
+          });
+        });
+      }
+      const header = document.querySelector(".site-header");
+      if (header) {
+        let ticking = false;
+        function updateHeaderShrink() {
+          const y = window.scrollY;
+          if (y >= 50) header.classList.add("is-shrunk");
+          else if (y < 30) header.classList.remove("is-shrunk");
+          ticking = false;
+        }
+        window.addEventListener("scroll", () => {
+          if (!ticking) {
+            requestAnimationFrame(updateHeaderShrink);
+            ticking = true;
+          }
+        }, { passive: true });
+        updateHeaderShrink();
+      }
+    </script>
+      <script src="../themes/design-switcher.js" defer></script>
+  </body>
+</html>

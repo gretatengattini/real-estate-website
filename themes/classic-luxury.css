@@ -1,0 +1,204 @@
+/**
+ * Design experiment: Classic Luxury
+ * Draft visual direction — traditional, formal, heritage SF.
+ * Loaded after styles.css — visual overrides only.
+ */
+
+:root {
+  --navy: #1A2744;
+  --navy-dark: #10182B;
+  --bg-main: #F7F4EF;
+  --bg-alt: #EFE9E0;
+  --card-bg: #FFFcf8;
+  --divider: #D9D0C4;
+  --text-body: #1A1A1A;
+  --text-muted: #5E564C;
+  --accent: #8B7355;
+  --font-display: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  --font-body: "Inter", Georgia, "Segoe UI", sans-serif;
+  --radius-sm: 2px;
+  --radius-md: 2px;
+  --shadow-card: 0 1px 0 rgba(26, 39, 68, 0.06);
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--bg-main);
+  color: var(--text-body);
+}
+
+h1,
+h2,
+h3,
+h4,
+.brand-title,
+.form-title,
+.success-title,
+.guide-card-title,
+.hero-title {
+  font-family: var(--font-display);
+  color: var(--navy);
+  font-weight: 600;
+}
+
+h1 {
+  font-size: clamp(2.75rem, 5.5vw, 4.5rem);
+  letter-spacing: -0.015em;
+  line-height: 1.12;
+}
+
+h2 {
+  font-size: clamp(2.05rem, 3.4vw, 2.75rem);
+}
+
+.brand-title {
+  font-size: 1.4rem;
+  letter-spacing: 0.02em;
+}
+
+.brand-subtitle {
+  color: var(--accent);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  font-weight: 600;
+}
+
+.site-header {
+  border-bottom: 1px solid var(--divider);
+}
+
+.site-header::before {
+  background: rgba(247, 244, 239, 0.94);
+}
+
+.site-header.is-shrunk {
+  box-shadow: 0 2px 0 rgba(26, 39, 68, 0.04);
+}
+
+.nav-menu {
+  background: rgba(247, 244, 239, 0.98);
+  box-shadow: 0 10px 30px rgba(26, 39, 68, 0.08);
+}
+
+.nav-menu a {
+  letter-spacing: 0.02em;
+}
+
+.nav-menu a:hover {
+  color: var(--navy);
+  background: rgba(139, 115, 85, 0.08);
+}
+
+.btn {
+  border-radius: var(--radius-sm);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-size: 0.88rem;
+  font-weight: 600;
+  padding: 1rem 1.75rem;
+  transition: background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease;
+}
+
+.btn-primary {
+  background: var(--navy);
+  border-color: var(--navy);
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background: var(--navy-dark);
+  border-color: var(--navy-dark);
+  opacity: 1;
+}
+
+.btn-outline {
+  color: var(--navy);
+  border-color: var(--navy);
+  background: transparent;
+}
+
+.btn-outline:hover {
+  background: rgba(26, 39, 68, 0.04);
+  opacity: 1;
+}
+
+.article-card,
+.guide-card,
+.path-card,
+.contact-card,
+.faq-item,
+.review-card,
+.about-bio-card,
+.about-photo-card,
+.evaluation-section .form-panel {
+  background: var(--card-bg);
+  border: 1px solid var(--divider);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+}
+
+.article-card:hover,
+.guide-card:hover,
+.path-card:hover {
+  border-color: var(--accent);
+  box-shadow: none;
+}
+
+.article-category,
+.about-label {
+  color: var(--accent);
+  letter-spacing: 0.16em;
+}
+
+.section-header h2 {
+  border-bottom: 1px solid var(--divider);
+  padding-bottom: 0.85rem;
+}
+
+.evaluation-section .lede {
+  font-family: var(--font-display);
+  font-style: italic;
+  color: var(--text-muted);
+}
+
+.evaluation-section .field input:focus,
+.evaluation-section .field textarea:focus,
+.guide-input:focus {
+  border-color: var(--navy);
+  box-shadow: 0 0 0 3px rgba(26, 39, 68, 0.1);
+}
+
+.evaluation-section .field-consent input[type="checkbox"] {
+  accent-color: var(--navy);
+}
+
+.site-footer {
+  border-top: 1px solid var(--divider);
+  background: var(--bg-alt);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .section-header,
+  .evaluation-section .assessment-intro,
+  .evaluation-section .form-panel {
+    animation: clFade 0.65s ease both;
+  }
+}
+
+@keyframes clFade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .section-header,
+  .evaluation-section .assessment-intro,
+  .evaluation-section .form-panel {
+    animation: none;
+  }
+}

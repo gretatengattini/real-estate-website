@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="noindex,nofollow" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Design Experiments | Greta Tengattini</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+    <style>
+      :root {
+        --bg: #faf9f7;
+        --text: #1e1e1c;
+        --muted: #6b6963;
+        --line: #dedad2;
+        --accent: #284a3c;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        min-height: 100vh;
+        font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        padding: clamp(2rem, 6vw, 4rem) 1.5rem;
+      }
+      .wrap { max-width: 40rem; margin: 0 auto; }
+      h1 {
+        font-size: clamp(1.75rem, 4vw, 2.25rem);
+        font-weight: 600;
+        margin: 0 0 0.75rem;
+      }
+      p {
+        color: var(--muted);
+        line-height: 1.65;
+        margin: 0 0 2rem;
+      }
+      ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+      }
+      a {
+        display: block;
+        padding: 1rem 1.15rem;
+        border: 1px solid var(--line);
+        border-radius: 4px;
+        color: var(--text);
+        text-decoration: none;
+        background: #fff;
+        transition: border-color 0.2s ease, background 0.2s ease;
+      }
+      a:hover {
+        border-color: var(--accent);
+        background: #fff;
+      }
+      a strong {
+        display: block;
+        color: var(--accent);
+        margin-bottom: 0.2rem;
+      }
+      a span {
+        font-size: 0.9rem;
+        color: var(--muted);
+      }
+      .back {
+        display: inline-block;
+        margin-top: 2rem;
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <h1>Design experiments</h1>
+      <p>
+        Visual-only previews. Content, forms, and the live site at the root are unchanged.
+        Use the top bar on each preview to switch versions while keeping the same page.
+      </p>
+      <ul>
+        <li>
+          <a href="design-original/index.html">
+            <strong>Original</strong>
+            <span>/design-original — current live look</span>
+          </a>
+        </li>
+        <li>
+          <a href="design-quiet-luxury/index.html">
+            <strong>Quiet Luxury</strong>
+            <span>/design-quiet-luxury — refined editorial SF aesthetic</span>
+          </a>
+        </li>
+        <li>
+          <a href="design-modern-tech/index.html">
+            <strong>Modern Tech</strong>
+            <span>/design-modern-tech — clean contemporary draft</span>
+          </a>
+        </li>
+        <li>
+          <a href="design-classic-luxury/index.html">
+            <strong>Classic Luxury</strong>
+            <span>/design-classic-luxury — traditional heritage draft</span>
+          </a>
+        </li>
+      </ul>
+      <a class="back" href="index.html">← Back to live site</a>
+    </div>
+  </body>
+</html>

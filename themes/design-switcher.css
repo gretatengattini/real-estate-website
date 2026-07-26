@@ -1,0 +1,88 @@
+/**
+ * Internal design comparison bar (preview routes only).
+ */
+
+body.design-preview {
+  --design-bar-h: 3.1rem;
+}
+
+body.design-preview .site-header {
+  top: var(--design-bar-h);
+}
+
+.design-switcher {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  min-height: var(--design-bar-h);
+  background: #111;
+  color: #f5f5f5;
+  border-bottom: 1px solid #333;
+  font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.design-switcher-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0.55rem 1.25rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.65rem 1rem;
+}
+
+.design-switcher-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #a3a3a3;
+  margin-right: 0.25rem;
+}
+
+.design-switcher-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.design-switcher a {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.35rem 0.7rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #e5e5e5;
+  background: #262626;
+  border: 1px solid #404040;
+  text-decoration: none;
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+.design-switcher a:hover {
+  background: #333;
+  color: #fff;
+}
+
+.design-switcher a.is-active {
+  background: #f5f5f5;
+  color: #111;
+  border-color: #f5f5f5;
+}
+
+.design-switcher-note {
+  margin-left: auto;
+  font-size: 0.72rem;
+  color: #737373;
+}
+
+@media (max-width: 720px) {
+  .design-switcher-note {
+    display: none;
+  }
+
+  .design-switcher-inner {
+    padding: 0.5rem 0.85rem;
+  }
+}

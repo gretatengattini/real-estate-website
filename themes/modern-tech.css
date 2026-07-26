@@ -1,0 +1,181 @@
+/**
+ * Design experiment: Modern Tech
+ * Draft visual direction — clean, precise, contemporary.
+ * Loaded after styles.css — visual overrides only.
+ */
+
+:root {
+  --navy: #0F172A;
+  --navy-dark: #020617;
+  --bg-main: #F8FAFC;
+  --bg-alt: #FFFFFF;
+  --card-bg: #FFFFFF;
+  --divider: #E2E8F0;
+  --text-body: #0F172A;
+  --text-muted: #64748B;
+  --accent: #2563EB;
+  --accent-hover: #1D4ED8;
+  --font-display: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --shadow-card: 0 1px 2px rgba(15, 23, 42, 0.05), 0 4px 12px rgba(15, 23, 42, 0.04);
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--bg-main);
+  color: var(--text-body);
+}
+
+h1,
+h2,
+h3,
+h4,
+.brand-title,
+.form-title,
+.success-title,
+.guide-card-title,
+.hero-title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  color: var(--navy);
+}
+
+h1 {
+  font-size: clamp(2.4rem, 5vw, 3.75rem);
+}
+
+.brand-title {
+  font-size: 1.1rem;
+  letter-spacing: -0.02em;
+}
+
+.brand-subtitle {
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.site-header::before {
+  background: rgba(248, 250, 252, 0.92);
+}
+
+.nav-menu {
+  background: rgba(248, 250, 252, 0.98);
+  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.1);
+}
+
+.nav-menu a:hover {
+  color: var(--accent);
+  background: rgba(37, 99, 235, 0.06);
+}
+
+.btn {
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+  box-shadow: 0 1px 2px rgba(37, 99, 235, 0.2);
+}
+
+.btn-primary:hover {
+  background: var(--accent-hover);
+  border-color: var(--accent-hover);
+  opacity: 1;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+}
+
+.btn-outline {
+  color: var(--navy);
+  border-color: var(--divider);
+  background: #fff;
+}
+
+.btn-outline:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  opacity: 1;
+}
+
+.article-card,
+.guide-card,
+.path-card,
+.contact-card,
+.faq-item,
+.review-card,
+.about-bio-card,
+.about-photo-card,
+.evaluation-section .form-panel {
+  border-radius: var(--radius-md);
+  border: 1px solid var(--divider);
+  box-shadow: var(--shadow-card);
+}
+
+.article-card:hover,
+.guide-card:hover,
+.path-card:hover {
+  border-color: #cbd5e1;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+}
+
+.article-category,
+.about-label {
+  color: var(--accent);
+  letter-spacing: 0.1em;
+}
+
+.evaluation-section .field input:focus,
+.evaluation-section .field textarea:focus,
+.guide-input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+.evaluation-section .field-consent input[type="checkbox"] {
+  accent-color: var(--accent);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .section-header,
+  .article-card,
+  .guide-card,
+  .path-card,
+  .evaluation-section .form-panel {
+    animation: mtFade 0.5s ease both;
+  }
+}
+
+@keyframes mtFade {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn-primary:hover {
+    transform: none;
+  }
+
+  .section-header,
+  .article-card,
+  .guide-card,
+  .path-card,
+  .evaluation-section .form-panel {
+    animation: none;
+  }
+}
