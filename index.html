@@ -82,6 +82,7 @@
             <a href="index.html">About</a>
             <a href="buying.html">Buying</a>
             <a href="selling.html">Selling</a>
+            <a href="evaluation.html">Evaluation</a>
             <a href="guides.html">Guides</a>
             <a href="buying.html#faq">FAQ</a>
             <a href="reviews.html">Reviews</a>
@@ -183,12 +184,14 @@
       if (navToggle && navMenu) {
         navToggle.addEventListener("click", () => {
           const isOpen = navMenu.classList.toggle("open");
+          navToggle.classList.toggle("open", isOpen);
           navToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
         });
         const navLinks = navMenu.querySelectorAll("a");
         navLinks.forEach(link => {
           link.addEventListener("click", () => {
             navMenu.classList.remove("open");
+            navToggle.classList.remove("open");
             navToggle.setAttribute("aria-expanded", "false");
           });
         });

@@ -29,6 +29,7 @@
             <a href="index.html">About</a>
             <a href="buying.html">Buying</a>
             <a href="selling.html">Selling</a>
+            <a href="evaluation.html">Evaluation</a>
             <a href="guides.html">Guides</a>
             <a href="buying.html#faq">FAQ</a>
             <a href="reviews.html">Reviews</a>
@@ -58,7 +59,7 @@
                   <a href="contact.html" class="btn btn-outline">Schedule a 15-min call</a>
                 </div>
                 <div id="guide-form-buyer" class="guide-form-wrap" hidden>
-                  <form class="guide-form" data-guide="buyer" aria-label="Request Buyer Guide">
+                  <form class="guide-form" data-guide="buyer" aria-label="Request Buyer Guide" action="https://formspree.io/f/mojkkolg" method="POST">
                     <label class="guide-label" for="guide-buyer-fname">First name</label>
                     <input type="text" id="guide-buyer-fname" class="guide-input" name="firstName" required autocomplete="given-name" />
                     <label class="guide-label" for="guide-buyer-lname">Last name</label>
@@ -67,6 +68,7 @@
                     <input type="email" id="guide-buyer-email" class="guide-input" name="email" required autocomplete="email" />
                     <label class="guide-label" for="guide-buyer-phone">Phone</label>
                     <input type="tel" id="guide-buyer-phone" class="guide-input" name="phone" autocomplete="tel" />
+                    <input type="hidden" name="_subject" value="New Buyer Guide Lead" />
                     <button type="submit" class="btn btn-primary guide-submit">Send me the guide</button>
                   </form>
                   <div class="guide-whats-inside">
@@ -80,7 +82,6 @@
                 </div>
                 <div class="guide-success" data-success="buyer" hidden>
                   <p class="guide-success-title">Thanks! Check your email.</p>
-                  <p class="guide-success-desc">We've sent you the Buyer Guide. <a href="#" class="guide-download-link">Download link</a> (placeholder).</p>
                 </div>
               </article>
 
@@ -116,7 +117,6 @@
                 </div>
                 <div class="guide-success" data-success="seller" hidden>
                   <p class="guide-success-title">Thanks! Check your email.</p>
-                  <p class="guide-success-desc">We've sent you the Seller Guide. <a href="#" class="guide-download-link">Download link</a> (placeholder).</p>
                 </div>
               </article>
             </div>
@@ -140,11 +140,14 @@
       const navMenu = document.getElementById("primary-nav");
       if (navToggle && navMenu) {
         navToggle.addEventListener("click", () => {
-          navToggle.setAttribute("aria-expanded", navMenu.classList.toggle("open") ? "true" : "false");
+          const isOpen = navMenu.classList.toggle("open");
+          navToggle.classList.toggle("open", isOpen);
+          navToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
         });
         navMenu.querySelectorAll("a").forEach(link => {
           link.addEventListener("click", () => {
             navMenu.classList.remove("open");
+            navToggle.classList.remove("open");
             navToggle.setAttribute("aria-expanded", "false");
           });
         });
