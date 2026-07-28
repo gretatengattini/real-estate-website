@@ -83,7 +83,7 @@
               <form
                 id="assessment-form"
                 class="assessment-form"
-                action="https://formsubmit.co/ajax/gretatengattini@gmail.com"
+                action="#"
                 method="POST"
                 novalidate
               >
@@ -179,7 +179,7 @@
                 </div>
 
                 <div class="field field-consent">
-                  <label class="consent-label" for="consent">
+                  <div class="consent-row">
                     <input
                       id="consent"
                       name="consent"
@@ -189,11 +189,11 @@
                       aria-required="true"
                       aria-describedby="consent-error"
                     />
-                    <span>
+                    <label class="consent-label" for="consent">
                       I agree to be contacted by Greta Tengattini regarding my personalized home evaluation and understand that the information I provide will be used to prepare and follow up on my requested assessment.
                       <span class="req" aria-hidden="true">*</span>
-                    </span>
-                  </label>
+                    </label>
+                  </div>
                   <p id="consent-error" class="field-error" role="alert" hidden></p>
                 </div>
 

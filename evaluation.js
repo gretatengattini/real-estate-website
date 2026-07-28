@@ -39,10 +39,13 @@ var THANK_YOU_PATH = "/thank-you";
 var DEFAULT_SUBMIT_LABEL = "Request My Personalized Review";
 
 if (form && submitBtn && formErrorEl) {
-  form.action = FORM_ENDPOINT;
+  // Never POST natively to FormSubmit — keeps users on this site even if JS is slow.
+  form.setAttribute("action", "#");
+  form.setAttribute("method", "post");
 
   form.addEventListener("submit", function (e) {
     e.preventDefault();
+    e.stopPropagation();
     if (isSubmitting || submitBtn.disabled) return;
 
     var data = getFormData();
@@ -78,17 +81,22 @@ if (form && submitBtn && formErrorEl) {
       })
       .then(function (result) {
         var body = result.body || {};
+        var rawMsg = String(body.message || body.error || "");
         var succeeded =
           result.ok &&
           body.success !== "false" &&
           body.success !== false;
 
         if (!succeeded) {
-          var msg =
-            body.message ||
-            body.error ||
-            "Sorry, we couldn’t send your request. Please try again in a moment.";
-          throw new Error(msg);
+          if (/activat/i.test(rawMsg)) {
+            throw new Error(
+              "One-time setup needed: check gretatengattini@gmail.com for an email from FormSubmit and click “Activate Form”. After that, clients go straight to the thank-you page — they never see this."
+            );
+          }
+          throw new Error(
+            rawMsg ||
+              "Sorry, we couldn’t send your request. Please try again in a moment."
+          );
         }
 
         // Only redirect after FormSubmit confirms success.
