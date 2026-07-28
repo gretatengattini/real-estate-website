@@ -1,8 +1,13 @@
 /**
- * Home Evaluation — FormSubmit + Geoapify SF address autocomplete.
+ * Home Evaluation — FormSubmit AJAX + Geoapify SF address autocomplete.
+ *
+ * Submissions email gretatengattini@gmail.com via FormSubmit.
+ * First submission: check that inbox and click FormSubmit's activation link.
  */
-var RECEIVING_EMAIL = "davivinted99@gmail.com";
 var GEOAPIFY_API_KEY = "cf899fff043047bdae1e7b3872e5224b";
+var RECEIVING_EMAIL = "gretatengattini@gmail.com";
+var FORM_ENDPOINT =
+  "https://formsubmit.co/ajax/" + encodeURIComponent(RECEIVING_EMAIL);
 
 var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 var PHONE_RE = /^[\d\s()+.-]{10,}$/;
@@ -20,45 +25,83 @@ var successEl = document.getElementById("success");
 var submitBtn = document.getElementById("submit-btn");
 var formErrorEl = document.getElementById("form-error");
 var submitAnotherBtn = document.getElementById("submit-another");
-var nextInput = document.getElementById("form-next");
+var subjectInput = document.getElementById("form-subject");
 var addressInput = document.getElementById("address");
 var suggestionsEl = document.getElementById("address-suggestions");
 
 var FIELDS = ["address", "email", "phone", "consent"];
-var allowNativeSubmit = false;
+var isSubmitting = false;
 var addressDebounceTimer = null;
 var activeSuggestionIndex = -1;
 var currentSuggestions = [];
 
-if (!form || !successEl || !submitBtn || !formErrorEl || !nextInput) {
-  // Page shell without form — nothing to wire.
-} else {
-  form.action = "https://formsubmit.co/" + encodeURIComponent(RECEIVING_EMAIL);
+var THANK_YOU_PATH = "/thank-you";
+var DEFAULT_SUBMIT_LABEL = "Request My Personalized Review";
 
-  nextInput.value =
-    window.location.origin +
-    window.location.pathname.replace(/\/?$/, "") +
-    "?success=1";
-
-  if (new URLSearchParams(window.location.search).get("success") === "1") {
-    showSuccess();
-    if (window.history && window.history.replaceState) {
-      window.history.replaceState({}, "", window.location.pathname);
-    }
-  }
+if (form && submitBtn && formErrorEl) {
+  form.action = FORM_ENDPOINT;
 
   form.addEventListener("submit", function (e) {
-    if (allowNativeSubmit) return;
-
     e.preventDefault();
+    if (isSubmitting || submitBtn.disabled) return;
+
     var data = getFormData();
     if (!validate(data)) return;
 
-    submitBtn.disabled = true;
-    submitBtn.textContent = "Sending…";
+    setSubmitting(true);
     formErrorEl.hidden = true;
-    allowNativeSubmit = true;
-    form.submit();
+    formErrorEl.textContent = "";
+
+    var subject = "New Home Evaluation Request – " + data.address;
+    if (subjectInput) subjectInput.value = subject;
+
+    var payload = new FormData();
+    payload.append("_subject", subject);
+    payload.append("_template", "table");
+    payload.append("_captcha", "false");
+    payload.append("address", data.address);
+    payload.append("email", data.email);
+    if (data.phone) payload.append("phone", data.phone);
+    if (data.note) payload.append("message", data.note);
+
+    fetch(FORM_ENDPOINT, {
+      method: "POST",
+      body: payload,
+      headers: { Accept: "application/json" },
+    })
+      .then(function (res) {
+        return res.json().then(function (body) {
+          return { ok: res.ok, body: body || {} };
+        }).catch(function () {
+          return { ok: res.ok, body: {} };
+        });
+      })
+      .then(function (result) {
+        var body = result.body || {};
+        var succeeded =
+          result.ok &&
+          body.success !== "false" &&
+          body.success !== false;
+
+        if (!succeeded) {
+          var msg =
+            body.message ||
+            body.error ||
+            "Sorry, we couldn’t send your request. Please try again in a moment.";
+          throw new Error(msg);
+        }
+
+        // Only redirect after FormSubmit confirms success.
+        window.location.assign(window.location.origin + THANK_YOU_PATH);
+      })
+      .catch(function (err) {
+        setSubmitting(false);
+        formErrorEl.textContent =
+          (err && err.message) ||
+          "Sorry, we couldn’t send your request. Please try again in a moment.";
+        formErrorEl.hidden = false;
+        formErrorEl.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      });
   });
 
   if (submitAnotherBtn) {
@@ -96,11 +139,27 @@ if (!form || !successEl || !submitBtn || !formErrorEl || !nextInput) {
   markAddressUnverified();
 }
 
+function setSubmitting(busy) {
+  isSubmitting = busy;
+  if (!submitBtn) return;
+  submitBtn.disabled = busy;
+  if (busy) {
+    submitBtn.setAttribute("aria-busy", "true");
+    submitBtn.textContent = "Sending…";
+    if (form) form.setAttribute("aria-busy", "true");
+  } else {
+    submitBtn.removeAttribute("aria-busy");
+    submitBtn.textContent = DEFAULT_SUBMIT_LABEL;
+    if (form) form.removeAttribute("aria-busy");
+  }
+}
+
 function getFormData() {
   return {
     address: form.address.value.trim(),
     email: form.email.value.trim(),
     phone: form.phone.value.trim(),
+    note: form.note ? form.note.value.trim() : "",
     consent: form.consent.checked,
   };
 }
@@ -348,7 +407,7 @@ function validate(data) {
   if (!data.consent) {
     showError(
       "consent",
-      "Please confirm you agree to be contacted and that this assessment may be shared with interested buyer clients."
+      "Please confirm you agree to be contacted regarding your personalized home evaluation."
     );
     ok = false;
   }
@@ -357,18 +416,18 @@ function validate(data) {
 }
 
 function showSuccess() {
+  if (!form || !successEl) return;
   form.hidden = true;
   successEl.hidden = false;
 }
 
 function showFormView() {
+  if (!form || !successEl || !submitBtn) return;
   successEl.hidden = true;
   form.hidden = false;
   form.reset();
   clearErrors();
   hideSuggestions();
   markAddressUnverified();
-  allowNativeSubmit = false;
-  submitBtn.disabled = false;
-  submitBtn.textContent = "Request My Personalized Review";
+  setSubmitting(false);
 }
