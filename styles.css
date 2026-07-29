@@ -441,6 +441,327 @@ p {
   }
 }
 
+/* Homepage mobile immersive UI — hidden on desktop / non-home */
+.site-header-poster,
+.mobile-menu-toggle,
+.hero-explore,
+.mobile-compact-header,
+.mobile-nav-overlay {
+  display: none;
+}
+
+body.mobile-nav-open {
+  overflow: hidden;
+}
+
+/* Immersive mobile homepage (phones + small tablets only) */
+@media (max-width: 900px) {
+  .page-home {
+    --mobile-brand-left: 1.35rem;
+    --mobile-brand-right: auto;
+    --mobile-brand-top: auto;
+    --mobile-brand-bottom: clamp(5.5rem, 14svh, 7.5rem);
+    --mobile-video-position-x: 42%;
+    --mobile-video-position-y: 48%;
+    --mobile-explore-bottom: calc(1.1rem + env(safe-area-inset-bottom, 0px));
+  }
+
+  .page-home:not(.landing-ads) .site-header {
+    height: 92svh;
+    min-height: 92svh;
+    max-height: 100dvh;
+    background-color: #1a1a1a;
+  }
+
+  .page-home:not(.landing-ads) .site-header-video {
+    object-position: var(--mobile-video-position-x) var(--mobile-video-position-y);
+  }
+
+  .page-home .site-header-poster {
+    display: block;
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: var(--mobile-video-position-x) var(--mobile-video-position-y);
+    z-index: 0;
+    pointer-events: none;
+    opacity: 1;
+    transition: opacity 500ms ease;
+  }
+
+  .page-home .site-header-poster.is-faded {
+    opacity: 0;
+  }
+
+  .page-home.prefers-reduced-motion .site-header-poster,
+  .page-home .site-header-poster.is-visible {
+    opacity: 1;
+  }
+
+  .page-home.prefers-reduced-motion .site-header-video {
+    visibility: hidden;
+  }
+
+  /* Soft gradient only toward branding / chrome — keep video luminous */
+  .page-home:not(.landing-ads) .site-header::after {
+    background: linear-gradient(
+      to top,
+      rgba(20, 24, 28, 0.42) 0%,
+      rgba(20, 24, 28, 0.18) 28%,
+      rgba(20, 24, 28, 0.05) 48%,
+      transparent 68%
+    ),
+    linear-gradient(
+      to right,
+      rgba(20, 24, 28, 0.22) 0%,
+      rgba(20, 24, 28, 0.08) 32%,
+      transparent 58%
+    );
+  }
+
+  .page-home:not(.landing-ads) .site-header .container {
+    display: block;
+    height: 100%;
+    padding: 0;
+    max-width: none;
+  }
+
+  .page-home:not(.landing-ads) .header-inner {
+    position: absolute;
+    left: max(var(--mobile-brand-left), env(safe-area-inset-left, 0px));
+    right: var(--mobile-brand-right);
+    top: var(--mobile-brand-top);
+    bottom: var(--mobile-brand-bottom);
+    width: auto;
+    max-width: min(18rem, 78vw);
+    padding: 0;
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .page-home:not(.landing-ads) .brand {
+    align-items: flex-start;
+    text-align: left;
+    gap: 0.55rem;
+  }
+
+  .page-home:not(.landing-ads) .brand-title {
+    font-size: clamp(1.55rem, 6.4vw, 1.9rem);
+    font-weight: var(--weight-display);
+    color: #f7f4ef;
+    letter-spacing: -0.02em;
+    text-shadow: 0 1px 18px rgba(0, 0, 0, 0.28);
+  }
+
+  .page-home:not(.landing-ads) .brand-subtitle {
+    font-size: 0.62rem;
+    letter-spacing: 0.26em;
+    margin-right: -0.26em;
+    color: rgba(247, 244, 239, 0.86);
+    text-shadow: 0 1px 14px rgba(0, 0, 0, 0.22);
+  }
+
+  .page-home:not(.landing-ads) .site-nav-bar {
+    display: none;
+  }
+
+  .page-home:not(.landing-ads) .mobile-menu-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: max(0.85rem, env(safe-area-inset-top, 0px));
+    right: max(0.85rem, env(safe-area-inset-right, 0px));
+    z-index: 5;
+    min-height: 44px;
+    min-width: 44px;
+    padding: 0.55rem 0.7rem;
+    border: none;
+    background: transparent;
+    color: #f7f4ef;
+    font-family: var(--font-body);
+    font-size: 0.72rem;
+    font-weight: var(--weight-ui);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    cursor: pointer;
+    text-shadow: 0 1px 12px rgba(0, 0, 0, 0.25);
+  }
+
+  .page-home:not(.landing-ads) .hero-explore {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.35rem;
+    position: absolute;
+    left: 50%;
+    bottom: var(--mobile-explore-bottom);
+    transform: translateX(-50%);
+    z-index: 5;
+    min-height: 44px;
+    min-width: 44px;
+    padding: 0.55rem 1rem;
+    color: #f7f4ef;
+    text-decoration: none;
+    text-shadow: 0 1px 12px rgba(0, 0, 0, 0.25);
+  }
+
+  .page-home:not(.landing-ads) .hero-explore-label {
+    font-family: var(--font-body);
+    font-size: 0.68rem;
+    font-weight: var(--weight-ui);
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+  }
+
+  .page-home:not(.landing-ads) .hero-explore-chevron {
+    width: 10px;
+    height: 10px;
+    border-right: 1px solid currentColor;
+    border-bottom: 1px solid currentColor;
+    transform: rotate(45deg);
+    opacity: 0.85;
+  }
+
+  .page-home:not(.landing-ads) .mobile-compact-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 120;
+    min-height: 52px;
+    padding: max(0.55rem, env(safe-area-inset-top, 0px)) 1.1rem 0.55rem;
+    background: rgba(251, 252, 253, 0.94);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--divider);
+    opacity: 0;
+    transform: translateY(-8px);
+    pointer-events: none;
+    transition: opacity 220ms ease, transform 220ms ease;
+  }
+
+  .page-home:not(.landing-ads) .mobile-compact-header.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  .page-home:not(.landing-ads) .mobile-compact-brand {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    font-weight: var(--weight-display);
+    color: var(--navy);
+    letter-spacing: -0.015em;
+    text-decoration: none;
+  }
+
+  .page-home:not(.landing-ads) .mobile-menu-toggle--compact {
+    position: static;
+    color: var(--navy);
+    text-shadow: none;
+    min-height: 44px;
+  }
+
+  .page-home:not(.landing-ads) .mobile-nav-overlay {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    padding: max(1.25rem, env(safe-area-inset-top, 0px)) 1.5rem
+      max(2rem, env(safe-area-inset-bottom, 0px));
+    background: #f7f3ec;
+    overflow: auto;
+  }
+
+  .page-home:not(.landing-ads) .mobile-nav-overlay[hidden] {
+    display: none;
+  }
+
+  .page-home:not(.landing-ads) .mobile-nav-close {
+    align-self: flex-end;
+    min-height: 44px;
+    min-width: 44px;
+    padding: 0.55rem 0.7rem;
+    border: none;
+    background: transparent;
+    color: var(--navy);
+    font-family: var(--font-body);
+    font-size: 0.72rem;
+    font-weight: var(--weight-ui);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+
+  .page-home:not(.landing-ads) .mobile-nav-links {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex: 1;
+    gap: 1.35rem;
+    padding: 1rem 0.25rem 2rem;
+  }
+
+  .page-home:not(.landing-ads) .mobile-nav-links a {
+    font-family: var(--font-display);
+    font-size: clamp(1.85rem, 8vw, 2.45rem);
+    font-weight: var(--weight-display);
+    color: var(--navy);
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+    text-decoration: none;
+  }
+
+  .page-home:not(.landing-ads) .about-section {
+    padding-top: clamp(3.25rem, 10vw, 4.5rem);
+  }
+
+  .page-home:not(.landing-ads) .about-editorial {
+    padding-left: 1.35rem;
+    padding-right: 1.35rem;
+  }
+
+  /* Google Ads landing: compact, distraction-free */
+  .page-home.landing-ads .site-header {
+    height: 38svh;
+    min-height: 200px;
+    max-height: 280px;
+  }
+
+  .page-home.landing-ads .hero-explore,
+  .page-home.landing-ads .mobile-menu-toggle,
+  .page-home.landing-ads .mobile-compact-header,
+  .page-home.landing-ads .mobile-nav-overlay {
+    display: none !important;
+  }
+
+  .page-home.landing-ads .site-nav-bar {
+    display: none;
+  }
+
+  .page-home.landing-ads .header-inner {
+    padding-top: 1.5rem;
+  }
+
+  .page-home.landing-ads .about-section {
+    padding-top: 2.25rem;
+  }
+}
+
+@media (max-width: 900px) and (prefers-reduced-motion: reduce) {
+  .page-home:not(.landing-ads) .mobile-compact-header,
+  .page-home .site-header-poster {
+    transition: none;
+  }
+}
+
 /* Hero */
 .hero {
   padding: 0;

@@ -57,9 +57,16 @@
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="styles.css" />
   </head>
-  <body>
+  <body class="page-home">
     <div class="page">
-      <header class="site-header">
+      <header class="site-header" id="site-hero">
+        <img
+          class="site-header-poster"
+          src="hero-poster.png"
+          alt=""
+          decoding="async"
+          aria-hidden="true"
+        />
         <video
           class="site-header-video"
           autoplay
@@ -67,10 +74,22 @@
           loop
           playsinline
           preload="metadata"
+          poster="hero-poster.png"
           aria-hidden="true"
         >
           <source src="hero2.mp4" type="video/mp4" />
         </video>
+
+        <button
+          type="button"
+          class="mobile-menu-toggle"
+          id="mobile-menu-toggle"
+          aria-label="Open menu"
+          aria-expanded="false"
+          aria-controls="mobile-nav-overlay"
+        >
+          <span class="mobile-menu-toggle-label">Menu</span>
+        </button>
 
         <div class="container">
           <div class="header-inner">
@@ -80,7 +99,52 @@
             </a>
           </div>
         </div>
+
+        <a href="#about" class="hero-explore" id="hero-explore">
+          <span class="hero-explore-label">Explore</span>
+          <span class="hero-explore-chevron" aria-hidden="true"></span>
+        </a>
       </header>
+
+      <div class="mobile-compact-header" id="mobile-compact-header" hidden>
+        <a href="index.html" class="mobile-compact-brand">Greta Tengattini</a>
+        <button
+          type="button"
+          class="mobile-menu-toggle mobile-menu-toggle--compact"
+          id="mobile-menu-toggle-compact"
+          aria-label="Open menu"
+          aria-expanded="false"
+          aria-controls="mobile-nav-overlay"
+        >
+          <span class="mobile-menu-toggle-label">Menu</span>
+        </button>
+      </div>
+
+      <div
+        class="mobile-nav-overlay"
+        id="mobile-nav-overlay"
+        hidden
+        role="dialog"
+        aria-modal="true"
+        aria-label="Site navigation"
+      >
+        <button
+          type="button"
+          class="mobile-nav-close"
+          id="mobile-nav-close"
+          aria-label="Close menu"
+        >
+          Close
+        </button>
+        <nav class="mobile-nav-links" aria-label="Mobile">
+          <a href="index.html">Home</a>
+          <a href="buying.html">Buying</a>
+          <a href="selling.html">Selling</a>
+          <a href="evaluation.html">Home Valuation</a>
+          <a href="index.html#about">About</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+      </div>
 
       <div class="site-nav-bar">
         <div class="container site-nav-inner">
@@ -120,6 +184,10 @@
                   src="greta-tengattini.jpg"
                   alt="Greta Tengattini, San Francisco Real Estate Agent"
                   class="profile-image"
+                  loading="lazy"
+                  decoding="async"
+                  width="840"
+                  height="1120"
                   onerror="this.style.display='none'; this.nextElementSibling.classList.add('profile-placeholder-visible');"
                 />
                 <div class="profile-placeholder" aria-hidden="true">GT</div>
@@ -196,6 +264,175 @@
     <script>
       document.getElementById("year").textContent = new Date().getFullYear();
 
+      (function () {
+        const params = new URLSearchParams(window.location.search);
+        if (params.get("landing") === "ads") {
+          document.body.classList.add("landing-ads");
+        }
+
+        const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        const video = document.querySelector(".site-header-video");
+        const poster = document.querySelector(".site-header-poster");
+
+        if (video) {
+          if (reduceMotion) {
+            video.removeAttribute("autoplay");
+            video.pause();
+            video.setAttribute("data-reduced-motion", "true");
+            document.body.classList.add("prefers-reduced-motion");
+            if (poster) poster.classList.add("is-visible");
+          } else {
+            const tryPlay = () => {
+              const p = video.play();
+              if (p && typeof p.catch === "function") p.catch(() => {});
+            };
+            if (video.readyState >= 2) tryPlay();
+            else video.addEventListener("loadeddata", tryPlay, { once: true });
+            video.addEventListener(
+              "playing",
+              () => {
+                if (poster) poster.classList.add("is-faded");
+              },
+              { once: true }
+            );
+          }
+        }
+
+        const overlay = document.getElementById("mobile-nav-overlay");
+        const menuToggle = document.getElementById("mobile-menu-toggle");
+        const menuToggleCompact = document.getElementById("mobile-menu-toggle-compact");
+        const menuClose = document.getElementById("mobile-nav-close");
+        const compactHeader = document.getElementById("mobile-compact-header");
+        const hero = document.getElementById("site-hero");
+        let lastMenuTrigger = null;
+        let focusable = [];
+
+        function isMobileHome() {
+          return window.matchMedia("(max-width: 900px)").matches &&
+            document.body.classList.contains("page-home") &&
+            !document.body.classList.contains("landing-ads");
+        }
+
+        function getFocusable(container) {
+          return Array.from(
+            container.querySelectorAll(
+              'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'
+            )
+          ).filter((el) => !el.hasAttribute("hidden") && el.offsetParent !== null);
+        }
+
+        function openMenu(trigger) {
+          if (!overlay || document.body.classList.contains("landing-ads")) return;
+          lastMenuTrigger = trigger || menuToggle;
+          overlay.hidden = false;
+          document.body.classList.add("mobile-nav-open");
+          [menuToggle, menuToggleCompact].forEach((btn) => {
+            if (!btn) return;
+            btn.setAttribute("aria-expanded", "true");
+            btn.setAttribute("aria-label", "Close menu");
+          });
+          focusable = getFocusable(overlay);
+          const first = focusable[0] || menuClose;
+          if (first) first.focus();
+        }
+
+        function closeMenu() {
+          if (!overlay || overlay.hidden) return;
+          overlay.hidden = true;
+          document.body.classList.remove("mobile-nav-open");
+          [menuToggle, menuToggleCompact].forEach((btn) => {
+            if (!btn) return;
+            btn.setAttribute("aria-expanded", "false");
+            btn.setAttribute("aria-label", "Open menu");
+          });
+          if (lastMenuTrigger) lastMenuTrigger.focus();
+        }
+
+        function toggleMenu(trigger) {
+          if (!overlay) return;
+          if (overlay.hidden) openMenu(trigger);
+          else closeMenu();
+        }
+
+        if (menuToggle) {
+          menuToggle.addEventListener("click", () => toggleMenu(menuToggle));
+        }
+        if (menuToggleCompact) {
+          menuToggleCompact.addEventListener("click", () => toggleMenu(menuToggleCompact));
+        }
+        if (menuClose) menuClose.addEventListener("click", closeMenu);
+
+        if (overlay) {
+          overlay.querySelectorAll("a").forEach((link) => {
+            link.addEventListener("click", closeMenu);
+          });
+          overlay.addEventListener("keydown", (e) => {
+            if (overlay.hidden) return;
+            if (e.key === "Escape") {
+              e.preventDefault();
+              closeMenu();
+              return;
+            }
+            if (e.key !== "Tab" || !focusable.length) return;
+            const first = focusable[0];
+            const last = focusable[focusable.length - 1];
+            if (e.shiftKey && document.activeElement === first) {
+              e.preventDefault();
+              last.focus();
+            } else if (!e.shiftKey && document.activeElement === last) {
+              e.preventDefault();
+              first.focus();
+            }
+          });
+        }
+
+        document.addEventListener("keydown", (e) => {
+          if (e.key === "Escape" && overlay && !overlay.hidden) closeMenu();
+        });
+
+        const explore = document.getElementById("hero-explore");
+        if (explore) {
+          explore.addEventListener("click", (e) => {
+            const target = document.getElementById("about");
+            if (!target) return;
+            e.preventDefault();
+            target.scrollIntoView({
+              behavior: reduceMotion ? "auto" : "smooth",
+              block: "start",
+            });
+          });
+        }
+
+        function updateCompactHeader() {
+          if (!compactHeader || !hero) return;
+          if (!isMobileHome()) {
+            compactHeader.hidden = true;
+            compactHeader.classList.remove("is-visible");
+            return;
+          }
+          const threshold = Math.max(80, hero.offsetHeight * 0.72);
+          const show = window.scrollY >= threshold;
+          compactHeader.hidden = !show;
+          compactHeader.classList.toggle("is-visible", show);
+        }
+
+        let ticking = false;
+        window.addEventListener(
+          "scroll",
+          () => {
+            if (ticking) return;
+            ticking = true;
+            requestAnimationFrame(() => {
+              updateCompactHeader();
+              ticking = false;
+            });
+          },
+          { passive: true }
+        );
+        window.addEventListener("resize", updateCompactHeader);
+        updateCompactHeader();
+      })();
+
       const navToggle = document.querySelector(".nav-toggle");
       const navMenu = document.getElementById("primary-nav");
       if (navToggle && navMenu) {
@@ -205,7 +442,7 @@
           navToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
         });
         const navLinks = navMenu.querySelectorAll("a");
-        navLinks.forEach(link => {
+        navLinks.forEach((link) => {
           link.addEventListener("click", () => {
             navMenu.classList.remove("open");
             navToggle.classList.remove("open");
@@ -217,21 +454,25 @@
       const header = document.querySelector(".site-nav-bar");
       const SHRINK_ADD = 50;
       const SHRINK_REMOVE = 30;
-      let ticking = false;
+      let navTicking = false;
       function updateHeaderShrink() {
         if (!header) return;
         const y = window.scrollY;
         if (y >= SHRINK_ADD) header.classList.add("is-shrunk");
         else if (y < SHRINK_REMOVE) header.classList.remove("is-shrunk");
-        ticking = false;
+        navTicking = false;
       }
       if (header) {
-        window.addEventListener("scroll", () => {
-          if (!ticking) {
-            requestAnimationFrame(updateHeaderShrink);
-            ticking = true;
-          }
-        }, { passive: true });
+        window.addEventListener(
+          "scroll",
+          () => {
+            if (!navTicking) {
+              requestAnimationFrame(updateHeaderShrink);
+              navTicking = true;
+            }
+          },
+          { passive: true }
+        );
         updateHeaderShrink();
       }
     </script>
