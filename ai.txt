@@ -1,7 +1,7 @@
 # Greta Tengattini — San Francisco Real Estate
 
 Person: Greta Tengattini
-Role: Buyer's Agent / Realtor
+Role: Real Estate Agent / Realtor
 Brokerage: Mosaik Real Estate
 License: California DRE #02318277
 Location: San Francisco, CA

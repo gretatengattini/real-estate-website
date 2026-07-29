@@ -6,7 +6,7 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0"
     />
-    <title>Greta Tengattini | San Francisco Buyer's Agent</title>
+    <title>Greta Tengattini | San Francisco Real Estate Agent</title>
     <meta
       name="description"
       content="San Francisco real estate expert. I guide serious buyers through SF's competitive market with strategic insights, data-driven analysis, and personalized service."
@@ -16,12 +16,12 @@
     <!-- Open Graph / social -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://gretarealestate.com/" />
-    <meta property="og:title" content="Greta Tengattini | San Francisco Buyer's Agent" />
+    <meta property="og:title" content="Greta Tengattini | San Francisco Real Estate Agent" />
     <meta property="og:description" content="San Francisco real estate expert. I guide serious buyers through SF's competitive market with strategic insights, data-driven analysis, and personalized service." />
     <meta property="og:locale" content="en_US" />
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Greta Tengattini | San Francisco Buyer's Agent" />
+    <meta name="twitter:title" content="Greta Tengattini | San Francisco Real Estate Agent" />
     <meta name="twitter:description" content="San Francisco real estate expert. I guide serious buyers through SF's competitive market with strategic insights, data-driven analysis, and personalized service." />
     <!-- Schema.org JSON-LD for AI and search -->
     <script type="application/ld+json">
@@ -40,7 +40,7 @@
           "@id": "https://gretarealestate.com/#person",
           "@type": ["Person", "RealEstateAgent"],
           "name": "Greta Tengattini",
-          "jobTitle": "Buyer's Agent",
+          "jobTitle": "Real Estate Agent",
           "description": "San Francisco real estate expert. Guides buyers and sellers through SF's competitive market with strategic insights, data-driven analysis, and personalized service. CA Licensed Realtor, DRE #02318277.",
           "url": "https://gretarealestate.com/",
           "email": "greta@mosaikrealestate.com",
@@ -79,18 +79,12 @@
               <span class="brand-title">Greta Tengattini</span>
               <span class="brand-subtitle">Mosaik Real Estate</span>
             </a>
-            <button
-              class="nav-toggle"
-              type="button"
-              aria-label="Toggle navigation"
-              aria-expanded="false"
-              aria-controls="primary-nav"
-            >
-              <span class="nav-toggle-line"></span>
-              <span class="nav-toggle-line"></span>
-              <span class="nav-toggle-line"></span>
-            </button>
           </div>
+        </div>
+      </header>
+
+      <div class="site-nav-bar">
+        <div class="container site-nav-inner">
           <nav id="primary-nav" class="nav-menu" aria-label="Primary">
             <a href="index.html">About</a>
             <a href="buying.html">Buying</a>
@@ -101,8 +95,19 @@
             <a href="reviews.html">Reviews</a>
             <a href="contact.html">Contact</a>
           </nav>
+          <button
+            class="nav-toggle"
+            type="button"
+            aria-label="Toggle navigation"
+            aria-expanded="false"
+            aria-controls="primary-nav"
+          >
+            <span class="nav-toggle-line"></span>
+            <span class="nav-toggle-line"></span>
+            <span class="nav-toggle-line"></span>
+          </button>
         </div>
-      </header>
+      </div>
 
       <main>
         <!-- ABOUT / GET TO KNOW ME (editorial) -->
@@ -114,7 +119,7 @@
               <div class="about-photo-inner">
                 <img
                   src="greta-tengattini.jpg"
-                  alt="Greta Tengattini, San Francisco Buyer's Agent"
+                  alt="Greta Tengattini, San Francisco Real Estate Agent"
                   class="profile-image"
                   onerror="this.style.display='none'; this.nextElementSibling.classList.add('profile-placeholder-visible');"
                 />
@@ -182,7 +187,7 @@
             <div>
               ©
               <span id="year"></span>
-              Greta Tengattini, San Francisco Buyer's Agent. All rights reserved.
+              Greta Tengattini, San Francisco Real Estate Agent. All rights reserved.
             </div>
           </div>
         </div>
@@ -210,7 +215,7 @@
         });
       }
 
-      const header = document.querySelector(".site-header");
+      const header = document.querySelector(".site-nav-bar");
       const SHRINK_ADD = 50;
       const SHRINK_REMOVE = 30;
       let ticking = false;

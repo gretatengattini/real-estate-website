@@ -29,7 +29,7 @@ var subjectInput = document.getElementById("form-subject");
 var addressInput = document.getElementById("address");
 var suggestionsEl = document.getElementById("address-suggestions");
 
-var FIELDS = ["address", "email", "phone", "consent"];
+var FIELDS = ["address", "email", "phone", "timeline", "contact_preference", "consent"];
 var isSubmitting = false;
 var addressDebounceTimer = null;
 var activeSuggestionIndex = -1;
@@ -63,8 +63,11 @@ if (form && submitBtn && formErrorEl) {
     payload.append("_template", "table");
     payload.append("_captcha", "false");
     payload.append("address", data.address);
+    if (data.unit) payload.append("unit", data.unit);
     payload.append("email", data.email);
     if (data.phone) payload.append("phone", data.phone);
+    payload.append("selling_timeline", data.timeline);
+    payload.append("contact_preference", data.contactPreference);
     if (data.note) payload.append("message", data.note);
 
     fetch(FORM_ENDPOINT, {
@@ -119,14 +122,17 @@ if (form && submitBtn && formErrorEl) {
   FIELDS.forEach(function (name) {
     var el = form.elements[name];
     if (!el) return;
-    var eventName = name === "consent" ? "change" : "input";
-    el.addEventListener(eventName, function () {
-      var errorEl = document.getElementById(name + "-error");
-      el.removeAttribute("aria-invalid");
-      if (errorEl) {
-        errorEl.hidden = true;
-        errorEl.textContent = "";
-      }
+    var eventName =
+      name === "consent" ||
+      name === "timeline" ||
+      name === "contact_preference"
+        ? "change"
+        : "input";
+    var controls = getFieldControls(name);
+    controls.forEach(function (control) {
+      control.addEventListener(eventName, function () {
+        clearFieldError(name);
+      });
     });
   });
 
@@ -162,11 +168,40 @@ function setSubmitting(busy) {
   }
 }
 
+function getFieldControls(name) {
+  var el = form.elements[name];
+  if (!el) return [];
+  if (el.length && el[0] && el[0].type === "radio") {
+    return Array.prototype.slice.call(el);
+  }
+  return [el];
+}
+
+function clearFieldError(name) {
+  getFieldControls(name).forEach(function (control) {
+    control.removeAttribute("aria-invalid");
+  });
+  var field = form.querySelector('.field-contact-pref');
+  if (name === "contact_preference" && field) {
+    field.classList.remove("is-invalid");
+  }
+  var errorEl = document.getElementById(name + "-error");
+  if (errorEl) {
+    errorEl.hidden = true;
+    errorEl.textContent = "";
+  }
+}
+
 function getFormData() {
   return {
     address: form.address.value.trim(),
+    unit: form.unit ? form.unit.value.trim() : "",
     email: form.email.value.trim(),
     phone: form.phone.value.trim(),
+    timeline: form.timeline ? form.timeline.value.trim() : "",
+    contactPreference: form.elements.contact_preference
+      ? String(form.elements.contact_preference.value || "").trim()
+      : "",
     note: form.note ? form.note.value.trim() : "",
     consent: form.consent.checked,
   };
@@ -174,22 +209,21 @@ function getFormData() {
 
 function clearErrors() {
   FIELDS.forEach(function (name) {
-    var input = form.elements[name];
-    var errorEl = document.getElementById(name + "-error");
-    if (input) input.removeAttribute("aria-invalid");
-    if (errorEl) {
-      errorEl.hidden = true;
-      errorEl.textContent = "";
-    }
+    clearFieldError(name);
   });
   formErrorEl.hidden = true;
   formErrorEl.textContent = "";
 }
 
 function showError(name, message) {
-  var input = form.elements[name];
+  getFieldControls(name).forEach(function (control) {
+    control.setAttribute("aria-invalid", "true");
+  });
+  if (name === "contact_preference") {
+    var field = form.querySelector(".field-contact-pref");
+    if (field) field.classList.add("is-invalid");
+  }
   var errorEl = document.getElementById(name + "-error");
-  if (input) input.setAttribute("aria-invalid", "true");
   if (errorEl) {
     errorEl.textContent = message;
     errorEl.hidden = false;
@@ -410,6 +444,17 @@ function validate(data) {
   }
   if (data.phone && !PHONE_RE.test(data.phone)) {
     showError("phone", "Enter a valid phone number.");
+    ok = false;
+  }
+  if (!data.timeline) {
+    showError("timeline", "Please select your selling timeline.");
+    ok = false;
+  }
+  if (!data.contactPreference) {
+    showError(
+      "contact_preference",
+      "Please select how you’d like to be contacted."
+    );
     ok = false;
   }
   if (!data.consent) {
