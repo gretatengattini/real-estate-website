@@ -572,8 +572,8 @@ body.mobile-nav-open {
     align-items: center;
     justify-content: center;
     position: absolute;
-    top: max(0.85rem, env(safe-area-inset-top, 0px));
-    right: max(0.85rem, env(safe-area-inset-right, 0px));
+    top: calc(env(safe-area-inset-top, 0px) + 1.5rem); /* ~24px below safe area */
+    right: calc(env(safe-area-inset-right, 0px) + 1.125rem); /* ~18px from edge */
     z-index: 5;
     min-height: 44px;
     min-width: 44px;
@@ -582,7 +582,7 @@ body.mobile-nav-open {
     background: transparent;
     color: #f7f4ef;
     font-family: var(--font-body);
-    font-size: 0.72rem;
+    font-size: 0.9375rem; /* 15px */
     font-weight: var(--weight-ui);
     letter-spacing: 0.18em;
     text-transform: uppercase;
