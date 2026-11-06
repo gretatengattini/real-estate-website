@@ -2457,8 +2457,16 @@ body.mobile-nav-open {
 }
 
 .article-layout {
-  max-width: 720px;
-  margin: 0 auto;
+  max-width: 42rem;
+  width: 100%;
+  margin: 0;
+}
+
+.article-layout > * {
+  max-width: 100%;
+  margin-left: 0;
+  margin-right: 0;
+  text-align: left;
 }
 
 .article-back {
@@ -2501,15 +2509,6 @@ body.mobile-nav-open {
   line-height: 1.45;
   color: var(--text-muted);
   margin-bottom: 1.25rem;
-}
-
-.article-layout .article-title,
-.article-layout .article-dek,
-.article-layout .article-byline,
-.article-layout .article-date,
-.article-layout .article-kicker,
-.article-layout .article-back {
-  text-align: left;
 }
 
 .article-byline {
@@ -2597,8 +2596,19 @@ body.mobile-nav-open {
   text-align: left;
 }
 
+.article-body > * {
+  margin-left: 0;
+  margin-right: 0;
+  text-align: left;
+}
+
 .article-body > * + * {
   margin-top: 1.25rem;
+}
+
+.article-body p {
+  margin-bottom: 0;
+  text-align: left;
 }
 
 .article-body h2 {
@@ -2609,6 +2619,7 @@ body.mobile-nav-open {
   margin-top: 2.5rem;
   margin-bottom: 0.75rem;
   line-height: 1.25;
+  text-align: left;
 }
 
 .article-body a {
