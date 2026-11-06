@@ -2389,19 +2389,22 @@ body.mobile-nav-open {
   margin-bottom: 0;
 }
 
-.insights-item-date {
-  font-family: var(--font-body);
-  font-size: 0.8rem;
-  color: var(--text-muted);
-}
-
 .insights-item-title {
   font-family: var(--font-display);
   font-size: clamp(1.45rem, 3vw, 1.85rem);
   font-weight: var(--weight-display-strong);
   line-height: var(--leading-display);
   color: var(--navy);
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.4rem;
+}
+
+.insights-item-date {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: var(--weight-ui);
+  color: var(--text-muted);
+  margin: 0 0 0.75rem;
+  letter-spacing: 0.01em;
 }
 
 .insights-item-alt {
