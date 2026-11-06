@@ -2503,6 +2503,15 @@ body.mobile-nav-open {
   margin-bottom: 1.25rem;
 }
 
+.article-layout .article-title,
+.article-layout .article-dek,
+.article-layout .article-byline,
+.article-layout .article-date,
+.article-layout .article-kicker,
+.article-layout .article-back {
+  text-align: left;
+}
+
 .article-byline {
   font-family: var(--font-body);
   font-size: 0.9rem;
@@ -2585,6 +2594,7 @@ body.mobile-nav-open {
   font-size: 1.05rem;
   line-height: 1.8;
   color: var(--text-body);
+  text-align: left;
 }
 
 .article-body > * + * {
