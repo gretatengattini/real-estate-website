@@ -2398,6 +2398,16 @@ body.mobile-nav-open {
   margin-bottom: 0.4rem;
 }
 
+.insights-item-dek {
+  font-family: var(--font-display);
+  font-size: clamp(1.05rem, 2.2vw, 1.2rem);
+  font-style: italic;
+  font-weight: var(--weight-display);
+  line-height: 1.45;
+  color: var(--text-muted);
+  margin: 0 0 0.55rem;
+}
+
 .insights-item-date {
   font-family: var(--font-body);
   font-size: 0.85rem;
