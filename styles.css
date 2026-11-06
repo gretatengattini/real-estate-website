@@ -2385,6 +2385,16 @@ body.mobile-nav-open {
   margin-bottom: 0.65rem;
 }
 
+.insights-item-meta .article-category {
+  margin-bottom: 0;
+}
+
+.insights-item-date {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
 .insights-item-title {
   font-family: var(--font-display);
   font-size: clamp(1.45rem, 3vw, 1.85rem);
