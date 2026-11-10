@@ -2704,10 +2704,9 @@ body.mobile-nav-open {
 }
 
 .article-body p {
-  margin-top: 0;
-  margin-bottom: 0;
   margin-left: 0;
   margin-right: 0;
+  margin-bottom: 0;
   font-family: var(--font-body);
   font-weight: 400;
   text-align: justify;
@@ -2724,6 +2723,10 @@ body.mobile-nav-open {
 }
 
 .article-body > * + * {
+  margin-top: 1.2em;
+}
+
+.article-body > p + p {
   margin-top: 1.2em;
 }
 
