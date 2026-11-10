@@ -2619,6 +2619,13 @@ body.mobile-nav-open {
   margin: 1.75rem 0 2rem;
 }
 
+.article-figure--medium {
+  max-width: 480px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .article-figure-placeholder {
   aspect-ratio: 16 / 9;
   background: linear-gradient(145deg, #d9e2ec 0%, #bcccdc 100%);
@@ -2640,6 +2647,7 @@ body.mobile-nav-open {
   width: 100%;
   height: auto;
   border: 1px solid var(--divider);
+  display: block;
 }
 
 .article-figure figcaption {
