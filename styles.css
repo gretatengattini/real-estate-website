@@ -2703,12 +2703,11 @@ body.mobile-nav-open {
   margin-right: 0;
 }
 
-.article-body > * + * {
-  margin-top: 1.2em;
-}
-
 .article-body p {
-  margin: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
   font-family: var(--font-body);
   font-weight: 400;
   text-align: justify;
@@ -2722,6 +2721,10 @@ body.mobile-nav-open {
   -webkit-hyphenate-limit-after: 3;
   overflow-wrap: break-word;
   word-spacing: normal;
+}
+
+.article-body > * + * {
+  margin-top: 1.2em;
 }
 
 .article-body h2 {
