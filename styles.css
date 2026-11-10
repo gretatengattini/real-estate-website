@@ -2511,7 +2511,7 @@ body.mobile-nav-open {
 }
 
 .article-layout {
-  max-width: 42rem;
+  max-width: 70ch;
   width: 100%;
   margin: 0;
 }
@@ -2647,6 +2647,8 @@ body.mobile-nav-open {
   font-size: 0.85rem;
   color: var(--text-muted);
   line-height: 1.5;
+  text-align: left;
+  hyphens: none;
 }
 
 .article-body h3 {
@@ -2657,16 +2659,21 @@ body.mobile-nav-open {
   margin-top: 2rem;
   margin-bottom: 0.65rem;
   line-height: 1.3;
+  text-align: left;
+  hyphens: none;
 }
 
 .article-body ul {
   margin: 0.35rem 0 0;
   padding-left: 1.25rem;
+  text-align: left;
+  hyphens: none;
 }
 
 .article-body li {
   margin: 0.55rem 0;
-  line-height: 1.7;
+  line-height: 1.75;
+  text-align: left;
 }
 
 .article-table-wrap {
@@ -2708,15 +2715,16 @@ body.mobile-nav-open {
 
 .article-body {
   font-size: 1.05rem;
-  line-height: 1.8;
+  line-height: 1.75;
   color: var(--text-body);
   text-align: left;
+  -webkit-hyphenate-limit-before: 3;
+  -webkit-hyphenate-limit-after: 3;
 }
 
 .article-body > * {
   margin-left: 0;
   margin-right: 0;
-  text-align: left;
 }
 
 .article-body > * + * {
@@ -2724,8 +2732,13 @@ body.mobile-nav-open {
 }
 
 .article-body p {
-  margin-bottom: 0;
-  text-align: left;
+  margin: 0;
+  text-align: justify;
+  text-justify: inter-word;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+  -ms-hyphens: auto;
+  overflow-wrap: break-word;
 }
 
 .article-body h2 {
@@ -2737,6 +2750,7 @@ body.mobile-nav-open {
   margin-bottom: 0.75rem;
   line-height: 1.25;
   text-align: left;
+  hyphens: none;
 }
 
 .article-body a {
@@ -2770,12 +2784,15 @@ body.mobile-nav-open {
   font-size: 1.25rem;
   font-weight: var(--weight-display-strong);
   color: var(--navy);
+  text-align: left;
+  hyphens: none;
 }
 
 .article-cta {
   margin-top: 3rem;
   padding-top: 2rem;
   border-top: 1px solid var(--divider);
+  text-align: left;
 }
 
 .article-cta h2 {
@@ -2783,12 +2800,16 @@ body.mobile-nav-open {
   font-size: 1.5rem;
   color: var(--navy);
   margin-bottom: 0.65rem;
+  text-align: left;
+  hyphens: none;
 }
 
 .article-cta p {
   color: var(--text-body);
   margin-bottom: 1.25rem;
-  line-height: 1.7;
+  line-height: 1.75;
+  text-align: left;
+  hyphens: none;
 }
 
 @media (max-width: 640px) {
@@ -2798,5 +2819,12 @@ body.mobile-nav-open {
 
   .article-title-options {
     padding: 0.9rem 1rem;
+  }
+
+  .article-body p {
+    text-align: left;
+    hyphens: none;
+    -webkit-hyphens: none;
+    -ms-hyphens: none;
   }
 }
