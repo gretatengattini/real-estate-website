@@ -18,11 +18,11 @@ Main pages:
 - Selling (seller guide, playbook): https://gretarealestate.com/selling.html
 - Evaluation (home assessment request): https://gretarealestate.com/evaluation.html
 - Guides: https://gretarealestate.com/guides.html
-- Articles: https://gretarealestate.com/articles.html
+- Blog: https://gretarealestate.com/blog.html
 - Reviews: https://gretarealestate.com/reviews.html
 - Contact: https://gretarealestate.com/contact.html
 
-Articles:
+Blog posts:
 - Buying in San Francisco? Can You Trust the Asking Price on Zillow?: https://gretarealestate.com/articles/san-francisco-how-much-should-i-offer.html
 - Should You Pay Cash for a $5M Home in San Francisco?: https://gretarealestate.com/articles/san-francisco-luxury-home-cash-vs-mortgage.html
 
