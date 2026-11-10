@@ -2,11 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://gretarealestate.com/</loc>
-    <lastmod>2026-11-09</lastmod>
+    <lastmod>2026-11-10</lastmod>
   </url>
   <url>
     <loc>https://gretarealestate.com/buying.html</loc>
-    <lastmod>2026-11-09</lastmod>
+    <lastmod>2026-11-10</lastmod>
   </url>
   <url>
     <loc>https://gretarealestate.com/selling.html</loc>
@@ -30,7 +30,7 @@
   </url>
   <url>
     <loc>https://gretarealestate.com/articles/san-francisco-luxury-home-cash-vs-mortgage.html</loc>
-    <lastmod>2026-11-06</lastmod>
+    <lastmod>2026-11-10</lastmod>
   </url>
   <url>
     <loc>https://gretarealestate.com/reviews.html</loc>
@@ -39,5 +39,13 @@
   <url>
     <loc>https://gretarealestate.com/contact.html</loc>
     <lastmod>2026-07-29</lastmod>
+  </url>
+  <url>
+    <loc>https://gretarealestate.com/ai.txt</loc>
+    <lastmod>2026-11-10</lastmod>
+  </url>
+  <url>
+    <loc>https://gretarealestate.com/llms.txt</loc>
+    <lastmod>2026-11-10</lastmod>
   </url>
 </urlset>
