@@ -185,7 +185,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="../styles.css?v=20261110d" />
+    <link rel="stylesheet" href="../styles.css?v=20261110e" />
   </head>
   <body>
     <div class="page">
@@ -302,6 +302,172 @@
                 <p>A buyer who wasn’t initially interested may love it in person. They may bring a partner back or mention it to a friend who is also looking. The seller’s hope is that wider exposure leads to more serious interest and stronger offers.</p>
 
                 <p>The strategy still depends on buyers responding to the property. A low asking price alone can’t guarantee multiple offers or a particular sale price.</p>
+
+                <section class="sale-reveal" id="asking-vs-sold" aria-labelledby="sale-reveal-heading">
+                  <h2 id="sale-reveal-heading">The asking price is only the beginning. What did these homes sell for?</h2>
+
+                  <p>These five Noe Valley single-family homes show how different the asking price and final sale price can be. Before revealing each result, take a guess. Would you have expected the home to sell at its listed price—or above it?</p>
+
+                  <script type="application/json" id="noe-valley-homes-data">
+                  [
+                    {
+                      "address": "1462 Guerrero Street",
+                      "beds": "4 bedrooms",
+                      "baths": "3 full + 1 half bathrooms",
+                      "sqft": null,
+                      "listed": 1495000,
+                      "sold": 1930000
+                    },
+                    {
+                      "address": "892 Duncan Street",
+                      "beds": "3 bedrooms",
+                      "baths": "1 full bathroom",
+                      "sqft": 1165,
+                      "listed": 1595000,
+                      "sold": 2375000
+                    },
+                    {
+                      "address": "591 Diamond Street",
+                      "beds": "3 bedrooms + bonus rooms",
+                      "baths": "2 full + 2 half bathrooms",
+                      "sqft": 2370,
+                      "listed": 3295000,
+                      "sold": 4375000
+                    },
+                    {
+                      "address": "3919 22nd Street",
+                      "beds": "4 bedrooms",
+                      "baths": "4 full bathrooms",
+                      "sqft": 2544,
+                      "listed": 3995000,
+                      "sold": 4715000
+                    },
+                    {
+                      "address": "438 Elizabeth Street",
+                      "beds": "3 bedrooms",
+                      "baths": "3 full bathrooms",
+                      "sqft": 2092,
+                      "listed": 3295000,
+                      "sold": 4930000
+                    }
+                  ]
+                  </script>
+
+                  <div class="sale-reveal-widget" data-sale-reveal hidden>
+                    <div class="sale-reveal-card">
+                      <p class="sale-reveal-progress" data-progress>Home 1 of 5</p>
+                      <h3 class="sale-reveal-address" data-address></h3>
+                      <p class="sale-reveal-meta" data-meta></p>
+
+                      <dl class="sale-reveal-listed">
+                        <div>
+                          <dt>Listed at</dt>
+                          <dd data-listed></dd>
+                        </div>
+                      </dl>
+
+                      <p class="sale-reveal-prompt" data-prompt>What do you think it sold for?</p>
+
+                      <div class="sale-reveal-actions">
+                        <button type="button" class="sale-reveal-btn sale-reveal-btn-primary" data-reveal>Reveal sale price</button>
+                      </div>
+
+                      <div class="sale-reveal-result" data-result hidden>
+                        <dl class="sale-reveal-stats">
+                          <div class="sale-reveal-stat sale-reveal-stat-sold">
+                            <dt>Sold for</dt>
+                            <dd data-sold></dd>
+                          </div>
+                          <div class="sale-reveal-stat">
+                            <dt>Above asking</dt>
+                            <dd data-diff></dd>
+                          </div>
+                          <div class="sale-reveal-stat">
+                            <dt>Percentage above asking</dt>
+                            <dd data-pct></dd>
+                          </div>
+                        </dl>
+                      </div>
+
+                      <div class="sale-reveal-nav" role="group" aria-label="Home navigation">
+                        <button type="button" class="sale-reveal-btn sale-reveal-btn-secondary" data-prev>Previous home</button>
+                        <button type="button" class="sale-reveal-btn sale-reveal-btn-secondary" data-next>Next home</button>
+                      </div>
+                      <div class="visually-hidden" aria-live="polite" data-live></div>
+                    </div>
+                  </div>
+
+                  <noscript>
+                    <p class="sale-reveal-noscript">JavaScript is off, so the interactive reveal is unavailable. You can still compare all five homes in the table below.</p>
+                  </noscript>
+
+                  <details class="sale-reveal-compare">
+                    <summary>Compare all five homes</summary>
+                    <div class="sale-reveal-compare-panel">
+                      <div class="sale-reveal-table-wrap">
+                        <table class="sale-reveal-table">
+                          <caption class="visually-hidden">Noe Valley single-family homes: listed price vs sold price</caption>
+                          <thead>
+                            <tr>
+                              <th scope="col">Address</th>
+                              <th scope="col">Listed at</th>
+                              <th scope="col">Sold for</th>
+                              <th scope="col">Above asking</th>
+                              <th scope="col">% above asking</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <th scope="row">1462 Guerrero Street</th>
+                              <td data-label="Listed at">$1,495,000</td>
+                              <td data-label="Sold for">$1,930,000</td>
+                              <td data-label="Above asking">$435,000</td>
+                              <td data-label="% above asking">29.1%</td>
+                            </tr>
+                            <tr>
+                              <th scope="row">892 Duncan Street</th>
+                              <td data-label="Listed at">$1,595,000</td>
+                              <td data-label="Sold for">$2,375,000</td>
+                              <td data-label="Above asking">$780,000</td>
+                              <td data-label="% above asking">48.9%</td>
+                            </tr>
+                            <tr>
+                              <th scope="row">591 Diamond Street</th>
+                              <td data-label="Listed at">$3,295,000</td>
+                              <td data-label="Sold for">$4,375,000</td>
+                              <td data-label="Above asking">$1,080,000</td>
+                              <td data-label="% above asking">32.8%</td>
+                            </tr>
+                            <tr>
+                              <th scope="row">3919 22nd Street</th>
+                              <td data-label="Listed at">$3,995,000</td>
+                              <td data-label="Sold for">$4,715,000</td>
+                              <td data-label="Above asking">$720,000</td>
+                              <td data-label="% above asking">18.0%</td>
+                            </tr>
+                            <tr>
+                              <th scope="row">438 Elizabeth Street</th>
+                              <td data-label="Listed at">$3,295,000</td>
+                              <td data-label="Sold for">$4,930,000</td>
+                              <td data-label="Above asking">$1,635,000</td>
+                              <td data-label="% above asking">49.6%</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </details>
+
+                  <p>591 Diamond Street and 438 Elizabeth Street were both listed at $3.295 million. One sold for $4.375 million; the other sold for $4.93 million.</p>
+
+                  <p>Meanwhile, 3919 22nd Street had a higher asking price of $3.995 million, but sold for less than 438 Elizabeth.</p>
+
+                  <p>That doesn’t tell us which buyer got the better deal. These are different homes, with different features and circumstances. It shows why the asking price alone—and a fixed percentage above it—cannot tell you what to offer.</p>
+
+                  <p>To understand a particular home’s value, we need to look at comparable sales and consider the differences: location, condition, layout, natural light, outdoor space, parking, and more.</p>
+
+                  <p class="sale-reveal-source">Source: SFARMLS records supplied by Greta Tengattini. Selected Noe Valley single-family home sales from August–October 2026. These examples illustrate differences between listed and sold prices; they are not a representative market sample or interchangeable comparable sales. Property details are as reported in the supplied records.</p>
+                </section>
 
                 <h2>What does the San Francisco data show?</h2>
 
@@ -513,6 +679,7 @@
       </footer>
     </div>
 
+    <script src="../js/sale-reveal.js" defer></script>
     <script>
       document.getElementById("year").textContent = new Date().getFullYear();
       const navToggle = document.querySelector(".nav-toggle");

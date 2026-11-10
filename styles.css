@@ -2914,3 +2914,424 @@ body.mobile-nav-open {
     padding: 0.9rem 1rem;
   }
 }
+
+/* —— Sale price reveal interaction —— */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.article-body .sale-reveal {
+  margin: 2.35em 0 0;
+  text-align: left;
+}
+
+.article-body .sale-reveal > h2 {
+  margin-top: 0;
+}
+
+.article-body .sale-reveal > h2 + p {
+  margin-top: 0.75em;
+}
+
+.article-body .sale-reveal > p {
+  text-align: justify;
+  text-align-last: left;
+}
+
+.article-body .sale-reveal > p + p {
+  margin-top: 1.2em;
+}
+
+.article-body .sale-reveal-source {
+  font-size: 0.875rem;
+  line-height: 1.55;
+  color: var(--text-muted);
+  text-align: left;
+  hyphens: none;
+  -webkit-hyphens: none;
+}
+
+.article-body .sale-reveal-noscript {
+  text-align: left;
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  hyphens: none;
+}
+
+.article-body .sale-reveal-widget {
+  margin: 1.5rem 0 1.25rem;
+  text-align: left;
+}
+
+.sale-reveal-widget[hidden] {
+  display: none !important;
+}
+
+.article-body .sale-reveal-card {
+  background: var(--card-bg);
+  border: 1px solid var(--divider);
+  padding: clamp(1.15rem, 3.5vw, 1.75rem);
+  text-align: left;
+}
+
+.article-body .sale-reveal-card p,
+.article-body .sale-reveal-card h3,
+.article-body .sale-reveal-card dt,
+.article-body .sale-reveal-card dd {
+  text-align: left;
+  text-align-last: left;
+  hyphens: none;
+  -webkit-hyphens: none;
+}
+
+.article-body .sale-reveal-progress {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin: 0 0 0.85rem;
+}
+
+.article-body .sale-reveal-address {
+  font-family: var(--font-display);
+  font-size: clamp(1.35rem, 3.5vw, 1.75rem);
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--navy);
+  margin: 0 0 0.45rem;
+  scroll-margin-top: 5.5rem;
+}
+
+.article-body .sale-reveal-meta {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--text-muted);
+  margin: 0 0 1.25rem;
+}
+
+.sale-reveal-listed {
+  margin: 0 0 1.25rem;
+  padding: 0.9rem 0;
+  border-top: 1px solid var(--divider);
+  border-bottom: 1px solid var(--divider);
+}
+
+.sale-reveal-listed div {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.35rem 1rem;
+}
+
+.sale-reveal-listed dt,
+.sale-reveal-stats dt {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin: 0;
+  text-align: left;
+}
+
+.sale-reveal-listed dd {
+  font-family: var(--font-body);
+  font-size: clamp(1.15rem, 3vw, 1.35rem);
+  font-weight: 600;
+  color: var(--navy);
+  margin: 0;
+  text-align: left;
+  font-variant-numeric: tabular-nums;
+}
+
+.sale-reveal-prompt {
+  font-family: var(--font-display);
+  font-size: clamp(1.05rem, 2.5vw, 1.2rem);
+  font-style: italic;
+  font-weight: 500;
+  color: var(--text-body);
+  margin: 0 0 1rem;
+  text-align: left;
+}
+
+.sale-reveal-actions {
+  margin: 0 0 1rem;
+}
+
+.sale-reveal-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  min-width: 44px;
+  padding: 0.7rem 1.15rem;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1.2;
+  border-radius: 0;
+  cursor: pointer;
+  text-align: center;
+  transition: background-color 160ms ease, color 160ms ease, border-color 160ms ease;
+}
+
+.sale-reveal-btn:focus-visible {
+  outline: 2px solid var(--navy);
+  outline-offset: 3px;
+}
+
+.sale-reveal-btn-primary {
+  width: 100%;
+  background: var(--navy);
+  color: #fff;
+  border: 1px solid var(--navy);
+}
+
+.sale-reveal-btn-primary:hover {
+  background: var(--navy-dark);
+  border-color: var(--navy-dark);
+}
+
+.sale-reveal-btn-primary[hidden] {
+  display: none !important;
+}
+
+.sale-reveal-btn-secondary {
+  flex: 1 1 auto;
+  background: var(--bg-alt);
+  color: var(--navy);
+  border: 1px solid var(--divider);
+}
+
+.sale-reveal-btn-secondary:hover:not(:disabled) {
+  border-color: rgba(16, 42, 67, 0.35);
+  background: #fff;
+}
+
+.sale-reveal-btn-secondary:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.sale-reveal-result {
+  margin: 0 0 1.25rem;
+}
+
+.sale-reveal-result[hidden] {
+  display: none !important;
+}
+
+.sale-reveal-result.is-revealing:not([hidden]) {
+  animation: sale-reveal-in 280ms ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sale-reveal-result.is-revealing:not([hidden]) {
+    animation: none;
+  }
+}
+
+@keyframes sale-reveal-in {
+  from {
+    opacity: 0;
+    transform: translateY(0.4rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.sale-reveal-stats {
+  display: grid;
+  gap: 0.9rem;
+  margin: 0;
+}
+
+.sale-reveal-stat {
+  padding: 0.75rem 0 0;
+  border-top: 1px solid var(--divider);
+  text-align: left;
+}
+
+.sale-reveal-stat:first-child {
+  border-top: none;
+  padding-top: 0;
+}
+
+.sale-reveal-stat dd {
+  margin: 0.25rem 0 0;
+  font-family: var(--font-body);
+  font-weight: 600;
+  color: var(--navy);
+  font-variant-numeric: tabular-nums;
+  overflow-wrap: anywhere;
+  text-align: left;
+}
+
+.sale-reveal-stat-sold dd {
+  font-size: clamp(1.45rem, 5vw, 2rem);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+.sale-reveal-stat:not(.sale-reveal-stat-sold) dd {
+  font-size: clamp(1.1rem, 3vw, 1.35rem);
+  line-height: 1.25;
+}
+
+.sale-reveal-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin-top: 0.25rem;
+}
+
+.sale-reveal-compare {
+  margin: 1.25rem 0 1.75rem;
+  border: 1px solid var(--divider);
+  background: var(--card-bg);
+  text-align: left;
+}
+
+.sale-reveal-compare summary {
+  list-style: none;
+  cursor: pointer;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  padding: 0.85rem 1.1rem;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--navy);
+  text-align: left;
+}
+
+.sale-reveal-compare summary::-webkit-details-marker {
+  display: none;
+}
+
+.sale-reveal-compare summary::after {
+  content: "+";
+  margin-left: auto;
+  font-weight: 400;
+  color: var(--text-muted);
+}
+
+.sale-reveal-compare[open] summary::after {
+  content: "–";
+}
+
+.sale-reveal-compare summary:focus-visible {
+  outline: 2px solid var(--navy);
+  outline-offset: -2px;
+}
+
+.sale-reveal-compare-panel {
+  padding: 0 1.1rem 1.15rem;
+  border-top: 1px solid var(--divider);
+}
+
+.sale-reveal-table-wrap {
+  width: 100%;
+  overflow-x: visible;
+}
+
+.sale-reveal-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  margin-top: 0.85rem;
+}
+
+.sale-reveal-table th,
+.sale-reveal-table td {
+  text-align: left;
+  padding: 0.75rem 0.55rem;
+  border-bottom: 1px solid var(--divider);
+  vertical-align: top;
+  font-variant-numeric: tabular-nums;
+}
+
+.sale-reveal-table thead th {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  background: var(--bg-alt);
+}
+
+.sale-reveal-table tbody th {
+  font-weight: 600;
+  color: var(--navy);
+}
+
+.sale-reveal-table td:nth-child(n + 2),
+.sale-reveal-table thead th:nth-child(n + 2) {
+  text-align: right;
+}
+
+@media (max-width: 700px) {
+  .sale-reveal-table thead {
+    display: none;
+  }
+
+  .sale-reveal-table,
+  .sale-reveal-table tbody,
+  .sale-reveal-table tr,
+  .sale-reveal-table th,
+  .sale-reveal-table td {
+    display: block;
+    width: 100%;
+  }
+
+  .sale-reveal-table tr {
+    padding: 0.9rem 0;
+    border-bottom: 1px solid var(--divider);
+  }
+
+  .sale-reveal-table tr:last-child {
+    border-bottom: none;
+  }
+
+  .sale-reveal-table tbody th {
+    padding: 0 0 0.45rem;
+    font-size: 1rem;
+  }
+
+  .sale-reveal-table td {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.75rem;
+    padding: 0.3rem 0;
+    border-bottom: none;
+    text-align: right;
+  }
+
+  .sale-reveal-table td::before {
+    content: attr(data-label);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    text-align: left;
+  }
+}
