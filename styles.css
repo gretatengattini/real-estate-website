@@ -2491,7 +2491,7 @@ body.mobile-nav-open {
   font-size: 1rem;
   line-height: 1.7;
   color: var(--text-body);
-  margin: 0;
+  margin: 0 0 0.75rem;
 }
 
 .insights-item-read {
@@ -2704,13 +2704,6 @@ body.mobile-nav-open {
 .article-table th:nth-child(3) {
   text-align: right;
   white-space: nowrap;
-}
-
-.insights-item-excerpt {
-  font-size: 1rem;
-  line-height: 1.7;
-  color: var(--text-body);
-  margin: 0 0 0.75rem;
 }
 
 .article-body {
