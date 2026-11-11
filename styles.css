@@ -2510,12 +2510,14 @@ body.mobile-nav-open {
 .article-page {
   padding: clamp(2rem, 4.5vw, 3.25rem) 0 clamp(3.5rem, 8vw, 5.5rem);
   overflow: visible;
+  text-align: left;
 }
 
 .article-page .container {
   overflow: visible;
   padding-left: 1.5rem;
   padding-right: 1.5rem;
+  text-align: left;
 }
 
 .article-layout {
@@ -2701,6 +2703,7 @@ body.mobile-nav-open {
 .article-body > * {
   margin-left: 0;
   margin-right: 0;
+  text-align: left;
 }
 
 .article-body p {
@@ -2709,17 +2712,15 @@ body.mobile-nav-open {
   margin-bottom: 0;
   font-family: var(--font-body);
   font-weight: 400;
-  text-align: justify;
-  text-align-last: left;
-  text-justify: inter-word;
-  hyphens: auto;
-  -webkit-hyphens: auto;
-  -ms-hyphens: auto;
-  hyphenate-limit-chars: 6 3 3;
-  -webkit-hyphenate-limit-before: 3;
-  -webkit-hyphenate-limit-after: 3;
+  text-align: left;
+  text-align-last: auto;
+  text-justify: auto;
+  hyphens: manual;
+  -webkit-hyphens: manual;
+  -ms-hyphens: manual;
   overflow-wrap: break-word;
   word-spacing: normal;
+  letter-spacing: normal;
 }
 
 .article-body > * + * {
@@ -2942,8 +2943,11 @@ body.mobile-nav-open {
 }
 
 .article-body .sale-reveal > p {
-  text-align: justify;
-  text-align-last: left;
+  text-align: left;
+  text-align-last: auto;
+  hyphens: manual;
+  -webkit-hyphens: manual;
+  word-spacing: normal;
 }
 
 .article-body .sale-reveal > p + p {
