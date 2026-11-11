@@ -185,7 +185,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="../styles.css?v=20261111a" />
+    <link rel="stylesheet" href="../styles.css?v=20261111j" />
   </head>
   <body>
     <div class="page">
@@ -309,44 +309,69 @@
                   <script type="application/json" id="noe-valley-homes-data">
                   [
                     {
-                      "address": "1462 Guerrero Street",
-                      "beds": "4 bedrooms",
-                      "baths": "3 full + 1 half bathrooms",
-                      "sqft": null,
-                      "listed": 1495000,
-                      "sold": 1930000
-                    },
-                    {
                       "address": "892 Duncan Street",
+                      "closed": "October 19, 2026",
                       "beds": "3 bedrooms",
                       "baths": "1 full bathroom",
                       "sqft": 1165,
                       "listed": 1595000,
-                      "sold": 2375000
+                      "sold": 2375000,
+                      "photo": "images/892-duncan-street.jpg",
+                      "photoAlt": "Exterior of 892 Duncan Street, a charcoal-grey single-story home with white trim, a small porch, and an attached garage on a corner lot.",
+                      "photoWidth": 1024,
+                      "photoHeight": 865
+                    },
+                    {
+                      "address": "2104 Castro Street",
+                      "closed": "October 22, 2026",
+                      "beds": "3 bedrooms",
+                      "baths": "3 full bathrooms",
+                      "sqft": 2380,
+                      "listed": 3399000,
+                      "sold": 4300000,
+                      "photo": "images/2104-castro-street.jpg",
+                      "photoAlt": "Exterior of 2104 Castro Street, a three-story white Victorian with a front garage, second-floor balcony, and steep entry stairs.",
+                      "photoWidth": 1024,
+                      "photoHeight": 865
                     },
                     {
                       "address": "591 Diamond Street",
+                      "closed": "October 5, 2026",
                       "beds": "3 bedrooms + bonus rooms",
                       "baths": "2 full + 2 half bathrooms",
                       "sqft": 2370,
                       "listed": 3295000,
-                      "sold": 4375000
+                      "sold": 4375000,
+                      "photo": "images/591-diamond-street.jpg",
+                      "photoAlt": "Exterior of 591 Diamond Street, a light-gray Victorian with white trim, a gabled roof, front stairs, and a street-level garage.",
+                      "photoWidth": 1024,
+                      "photoHeight": 865
                     },
                     {
                       "address": "3919 22nd Street",
+                      "closed": "October 30, 2026",
                       "beds": "4 bedrooms",
                       "baths": "4 full bathrooms",
                       "sqft": 2544,
                       "listed": 3995000,
-                      "sold": 4715000
+                      "sold": 4715000,
+                      "photo": "images/3919-22nd-street.jpg",
+                      "photoAlt": "Exterior of 3919 22nd Street, a light-green Victorian with yellow trim, a front balcony, gabled roof, and street-level garage.",
+                      "photoWidth": 1024,
+                      "photoHeight": 865
                     },
                     {
                       "address": "438 Elizabeth Street",
+                      "closed": "August 31, 2026",
                       "beds": "3 bedrooms",
                       "baths": "3 full bathrooms",
                       "sqft": 2092,
                       "listed": 3295000,
-                      "sold": 4930000
+                      "sold": 4930000,
+                      "photo": "images/438-elizabeth-street.jpg",
+                      "photoAlt": "Exterior of 438 Elizabeth Street, a tall white Victorian with a bay window, front stairs, peaked roof, and street-level garage.",
+                      "photoWidth": 1024,
+                      "photoHeight": 865
                     }
                   ]
                   </script>
@@ -355,6 +380,10 @@
                     <div class="sale-reveal-card">
                       <p class="sale-reveal-progress" data-progress>Home 1 of 5</p>
                       <h3 class="sale-reveal-address" data-address></h3>
+                      <p class="sale-reveal-closed" data-closed></p>
+                      <figure class="sale-reveal-photo" data-photo-wrap hidden>
+                        <img data-photo src="" alt="" loading="lazy" decoding="async" />
+                      </figure>
                       <p class="sale-reveal-meta" data-meta></p>
 
                       <dl class="sale-reveal-listed">
@@ -416,18 +445,18 @@
                           </thead>
                           <tbody>
                             <tr>
-                              <th scope="row">1462 Guerrero Street</th>
-                              <td data-label="Listed at">$1,495,000</td>
-                              <td data-label="Sold for">$1,930,000</td>
-                              <td data-label="Above asking">$435,000</td>
-                              <td data-label="% above asking">29.1%</td>
-                            </tr>
-                            <tr>
                               <th scope="row">892 Duncan Street</th>
                               <td data-label="Listed at">$1,595,000</td>
                               <td data-label="Sold for">$2,375,000</td>
                               <td data-label="Above asking">$780,000</td>
                               <td data-label="% above asking">48.9%</td>
+                            </tr>
+                            <tr>
+                              <th scope="row">2104 Castro Street</th>
+                              <td data-label="Listed at">$3,399,000</td>
+                              <td data-label="Sold for">$4,300,000</td>
+                              <td data-label="Above asking">$901,000</td>
+                              <td data-label="% above asking">26.5%</td>
                             </tr>
                             <tr>
                               <th scope="row">591 Diamond Street</th>
@@ -677,7 +706,7 @@
       </footer>
     </div>
 
-    <script src="../js/sale-reveal.js" defer></script>
+    <script src="../js/sale-reveal.js?v=20261111j" defer></script>
     <script>
       document.getElementById("year").textContent = new Date().getFullYear();
       const navToggle = document.querySelector(".nav-toggle");

@@ -40,6 +40,9 @@
   const els = {
     progress: root.querySelector("[data-progress]"),
     address: root.querySelector("[data-address]"),
+    closed: root.querySelector("[data-closed]"),
+    photoWrap: root.querySelector("[data-photo-wrap]"),
+    photo: root.querySelector("[data-photo]"),
     meta: root.querySelector("[data-meta]"),
     listed: root.querySelector("[data-listed]"),
     prompt: root.querySelector("[data-prompt]"),
@@ -64,6 +67,26 @@
     });
   }
 
+  function renderMedia(home) {
+    if (!els.photoWrap || !els.photo) return;
+
+    if (home.photo) {
+      els.photo.src = home.photo;
+      els.photo.alt = home.photoAlt || "Exterior of " + home.address;
+      if (home.photoWidth) els.photo.width = home.photoWidth;
+      else els.photo.removeAttribute("width");
+      if (home.photoHeight) els.photo.height = home.photoHeight;
+      else els.photo.removeAttribute("height");
+      els.photoWrap.hidden = false;
+    } else {
+      els.photo.removeAttribute("src");
+      els.photo.alt = "";
+      els.photo.removeAttribute("width");
+      els.photo.removeAttribute("height");
+      els.photoWrap.hidden = true;
+    }
+  }
+
   function render() {
     const home = homes[index];
     const isRevealed = revealed.has(index);
@@ -72,6 +95,11 @@
 
     els.progress.textContent = "Home " + (index + 1) + " of " + homes.length;
     els.address.textContent = home.address;
+    if (els.closed) {
+      els.closed.textContent = home.closed ? "Closed " + home.closed : "";
+      els.closed.hidden = !home.closed;
+    }
+    renderMedia(home);
     els.meta.textContent = metaLine(home);
     els.listed.textContent = money.format(home.listed);
 
