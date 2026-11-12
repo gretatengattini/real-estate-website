@@ -173,7 +173,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="../styles.css?v=20261112a" />
+    <link rel="stylesheet" href="../styles.css?v=20261112b" />
   </head>
   <body>
     <div class="page">
@@ -241,13 +241,56 @@
 
                 <p>Imagine you’re at that showing. The price looks promising, and you’ve just walked through two separate units. What would you check before making an offer?</p>
 
-                <ul>
-                  <li>What similar single-family homes sold for</li>
-                  <li>What the city records and approved plans show</li>
-                  <li>What it would cost to connect the two units</li>
-                </ul>
+                <div class="check-first-quiz" data-check-first-quiz hidden>
+                  <p class="check-first-prompt">Let’s see what you’d check first. Choose one answer.</p>
 
-                <p>I’d start with the city records and approved plans. I want to know how many dwellings the city recognizes and whether it approved any changes to the layout. That helps me choose which sales to compare it with. If your plans depend on combining the units, I’d also want to know whether there’s an approval path before you spend time getting construction estimates.</p>
+                  <div class="check-first-choices" role="group" aria-label="What would you check first?">
+                    <button
+                      type="button"
+                      class="check-first-choice"
+                      data-choice="comps"
+                      aria-pressed="false"
+                    >
+                      <span class="check-first-choice-label">What similar single-family homes sold for</span>
+                      <span class="check-first-choice-status" data-status hidden></span>
+                    </button>
+                    <button
+                      type="button"
+                      class="check-first-choice"
+                      data-choice="records"
+                      aria-pressed="false"
+                    >
+                      <span class="check-first-choice-label">What the city records and approved plans show</span>
+                      <span class="check-first-choice-status" data-status hidden></span>
+                    </button>
+                    <button
+                      type="button"
+                      class="check-first-choice"
+                      data-choice="cost"
+                      aria-pressed="false"
+                    >
+                      <span class="check-first-choice-label">What it would cost to connect the two units</span>
+                      <span class="check-first-choice-status" data-status hidden></span>
+                    </button>
+                  </div>
+
+                  <p class="check-first-feedback" data-feedback aria-live="polite"></p>
+
+                  <p class="check-first-explain" data-explain hidden>
+                    I’d start with the city records and approved plans. I want to know how many dwellings the city recognizes and whether it approved any changes to the layout. That helps me choose which sales to compare it with. If your plans depend on combining the units, I’d also want to know whether there’s an approval path before you spend time getting construction estimates.
+                  </p>
+                </div>
+
+                <noscript>
+                  <ul>
+                    <li>What similar single-family homes sold for</li>
+                    <li>What the city records and approved plans show</li>
+                    <li>What it would cost to connect the two units</li>
+                  </ul>
+                  <p>
+                    I’d start with the city records and approved plans. I want to know how many dwellings the city recognizes and whether it approved any changes to the layout. That helps me choose which sales to compare it with. If your plans depend on combining the units, I’d also want to know whether there’s an approval path before you spend time getting construction estimates.
+                  </p>
+                </noscript>
 
                 <h2>The price looked good. Compared with what?</h2>
 
@@ -369,6 +412,7 @@
       </footer>
     </div>
 
+    <script src="../js/check-first-quiz.js?v=20261112b" defer></script>
     <script>
       document.getElementById("year").textContent = new Date().getFullYear();
       const navToggle = document.querySelector(".nav-toggle");

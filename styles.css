@@ -3375,3 +3375,124 @@ body.mobile-nav-open {
     text-align: left;
   }
 }
+
+/* Duplex article: “What would you check first?” quiz */
+.check-first-quiz[hidden] {
+  display: none !important;
+}
+
+.article-body .check-first-quiz {
+  margin: 1.15rem 0 1.5rem;
+  text-align: left;
+}
+
+.article-body .check-first-prompt {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.6;
+  color: var(--text-body);
+  margin: 0 0 0.9rem;
+}
+
+.article-body .check-first-choices {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  margin: 0 0 0.85rem;
+}
+
+.article-body .check-first-choice {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.45rem 0.85rem;
+  width: 100%;
+  min-height: 44px;
+  padding: 0.85rem 1rem;
+  font-family: var(--font-body);
+  font-size: 0.98rem;
+  font-weight: 500;
+  line-height: 1.45;
+  color: var(--navy);
+  text-align: left;
+  background: var(--card-bg);
+  border: 1px solid var(--divider);
+  border-radius: 0;
+  cursor: pointer;
+  transition: background-color 160ms ease, border-color 160ms ease, color 160ms ease;
+}
+
+.article-body .check-first-choice:hover {
+  border-color: var(--navy);
+}
+
+.article-body .check-first-choice:focus-visible {
+  outline: 2px solid var(--navy);
+  outline-offset: 3px;
+}
+
+.article-body .check-first-choice-label {
+  flex: 1 1 12rem;
+  text-align: left;
+}
+
+.article-body .check-first-choice-status {
+  flex: 0 0 auto;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  line-height: 1.3;
+}
+
+.article-body .check-first-choice-status[hidden] {
+  display: none !important;
+}
+
+.article-body .check-first-choice.is-correct {
+  background: #e8f5ef;
+  border-color: #1b7a4a;
+  color: #0f5132;
+}
+
+.article-body .check-first-choice.is-correct .check-first-choice-status {
+  color: #0f5132;
+}
+
+.article-body .check-first-choice.is-incorrect {
+  background: #fceceb;
+  border-color: #b42318;
+  color: #7a1c14;
+}
+
+.article-body .check-first-choice.is-incorrect .check-first-choice-status {
+  color: #7a1c14;
+}
+
+.article-body .check-first-feedback {
+  min-height: 1.5em;
+  margin: 0 0 0.85rem;
+  font-family: var(--font-body);
+  font-size: 0.98rem;
+  font-weight: 500;
+  line-height: 1.55;
+  color: var(--text-body);
+}
+
+.article-body .check-first-feedback.is-correct {
+  color: #0f5132;
+}
+
+.article-body .check-first-feedback.is-incorrect {
+  color: #7a1c14;
+}
+
+.article-body .check-first-explain[hidden] {
+  display: none !important;
+}
+
+.article-body .check-first-explain {
+  margin: 0;
+}
