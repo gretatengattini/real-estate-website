@@ -18,9 +18,10 @@ Sitemap: https://gretarealestate.com/sitemap.xml
 
 ## Blog articles
 
+- [Zillow Says Single-Family. What If It’s Actually a Duplex?](https://gretarealestate.com/articles/san-francisco-zillow-single-family-or-duplex.html): What to check when a SF listing says single-family but city records may show a duplex—3R reports, merger rules, ADUs, and duplex financing.
 - [Buying in San Francisco? Can You Trust the Asking Price on Zillow?](https://gretarealestate.com/articles/san-francisco-how-much-should-i-offer.html): Explains why SF asking prices are often below expected sale prices, how to use Zillow sold comps, what recent data shows about selling over list, and how to decide what to offer within budget.
 - [Should You Pay Cash for a $5M Home in San Francisco?](https://gretarealestate.com/articles/san-francisco-luxury-home-cash-vs-mortgage.html): When an all-cash offer helps in SF luxury deals, when a mortgage still makes sense, and what to ask before offer day.
 
 ## Topics this site covers
 
-San Francisco real estate, offer strategy, asking vs sold price, comparable sales / CMA, Zillow sold data interpretation, cash vs mortgage for luxury homes, first-time buyers in San Francisco.
+San Francisco real estate, offer strategy, asking vs sold price, comparable sales / CMA, Zillow sold data interpretation, duplex vs single-family listings, dwelling unit mergers, ADUs, duplex financing, cash vs mortgage for luxury homes, first-time buyers in San Francisco.
